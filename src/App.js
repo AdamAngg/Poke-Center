@@ -34,6 +34,7 @@ const spinner = () => (
     <div className="loading-spinner"></div>
   </div>
 );
+
 function App() {
   const [filter, filterSet] = React.useState("");
   const [pokemon, pokemonSet] = React.useState([]);
