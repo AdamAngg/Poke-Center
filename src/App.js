@@ -4,7 +4,6 @@ import "./styles/styles.scss";
 import PokemonInfo from "./Components/PokemonInfo";
 import PokemonFilter from "./Components/PokemonFilter";
 import PokemonTable from "./Components/PokemonTable";
-import PokemonContext from "./Components/PokemonContext";
 
 function App() {
   const [filter, filterSet] = React.useState("");
@@ -12,10 +11,11 @@ function App() {
   const [selectedItem, selectedItemSet] = React.useState(null);
 
   React.useEffect(() => {
-    fetch("http://localhost:3000/pokemon.json").then((resp) =>
-      resp.json().then((data) => pokemonSet(data))
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0").then((resp) =>
+      resp.json().then((data) => pokemonSet(data.results))
     );
   }, []);
+  pokemon.forEach((e) => console.log(e.name));
 
   return (
     <div className="section">
@@ -27,7 +27,7 @@ function App() {
           pokemon={pokemon}
           selectedItemSet={selectedItemSet}
         />
-        <PokemonInfo {...selectedItem} />
+        {selectedItem && <PokemonInfo {...selectedItem} />}
       </div>
     </div>
   );

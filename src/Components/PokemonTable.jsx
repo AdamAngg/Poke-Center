@@ -11,14 +11,12 @@ const PokemonTable = ({ filter, pokemon, selectedItemSet }) => (
       </thead>
       <tbody>
         {pokemon
-          .filter((pokemon) =>
-            pokemon.name.english.toLowerCase().includes(filter)
-          )
+          .filter((pokemon) => pokemon.name.toLowerCase().includes(filter))
           .slice(0, 20)
           .map((pokemon) => (
             <PokemnonRow
               pokemon={pokemon}
-              key={pokemon.id}
+              key={pokemon.name + 151}
               onSelect={(pokemon) => selectedItemSet(pokemon)}
             />
           ))}

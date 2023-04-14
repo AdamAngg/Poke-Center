@@ -1,8 +1,8 @@
 import React from "react";
 const PokemnonRow = ({ pokemon, onSelect }) => (
   <tr>
-    <td>{pokemon.name.english}</td>
-    <td>{pokemon.type.join("/")}</td>
+    <td>{pokemon.name}</td>
+    {/* <td>{pokemon.type.join("/")}</td> */}
     <td>
       <button onClick={() => onSelect(pokemon)}>Select</button>
     </td>
