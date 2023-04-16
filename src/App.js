@@ -15,7 +15,6 @@ function App() {
       resp.json().then((data) => pokemonSet(data.results))
     );
   }, []);
-  pokemon.forEach((e) => console.log(e.name));
 
   return (
     <div className="section">
