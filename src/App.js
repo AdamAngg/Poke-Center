@@ -1,22 +1,23 @@
 import React from "react";
+import { useEffect } from "react";
 import "./styles/styles.scss";
-
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPokemon } from "./store/pokemonSlice";
 import PokemonInfo from "./Components/PokemonInfo";
 import PokemonFilter from "./Components/PokemonFilter";
 import PokemonTable from "./Components/PokemonTable";
 
 function App() {
   const [filter, filterSet] = React.useState("");
-  const [pokemon, pokemonSet] = React.useState([]);
   const [selectedItem, selectedItemSet] = React.useState(null);
 
-  React.useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0").then((resp) =>
-      resp.json().then((data) => pokemonSet(data.results))
-    );
+  const pokemon = useSelector((state) => state.pokemon);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchPokemon);
   }, []);
+  console.log(pokemon);
 
-  const store = createStore();
   return (
     <div className="section">
       <h1 className="title">Pokemon search</h1>
