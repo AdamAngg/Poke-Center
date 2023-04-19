@@ -1,7 +1,5 @@
 import React from "react";
 import "./styles/styles.scss";
-import { conf } from "redux";
-import { Provider } from "react";
 
 import PokemonInfo from "./Components/PokemonInfo";
 import PokemonFilter from "./Components/PokemonFilter";
