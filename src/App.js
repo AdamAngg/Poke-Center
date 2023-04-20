@@ -10,13 +10,11 @@ import PokemonTable from "./Components/PokemonTable";
 function App() {
   const [filter, filterSet] = React.useState("");
   const [selectedItem, selectedItemSet] = React.useState(null);
-
-  const pokemon = useSelector((state) => state.pokemon);
+  const pokemon = useSelector((state) => state);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchPokemon);
-  }, []);
-  console.log(pokemon);
+    dispatch(fetchPokemon());
+  }, [dispatch]);
 
   return (
     <div className="section">

@@ -5,24 +5,18 @@ const initialState = {
   pokemon: [],
   loading: false,
   error: "",
-  bu: 1,
 };
 
 export const fetchPokemon = createAsyncThunk("pokemon/fetchPokemon", () => {
   return axios
     .get("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
-    .then((response) => response.data);
+    .then((response) => response.data.results);
 });
 
 export const pokemonSlice = createSlice({
   name: "pokemon",
   initialState,
-  reducers: {
-    reduce(state) {
-      state.bu -= 1;
-    },
-  },
-  extraReducers: (builder) => {
+  extraReducers(builder) {
     builder.addCase(fetchPokemon.pending, (state) => {
       state.loading = true;
     });
@@ -38,4 +32,5 @@ export const pokemonSlice = createSlice({
     });
   },
 });
+console.log(initialState);
 export default pokemonSlice.reducer;
