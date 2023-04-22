@@ -10,12 +10,12 @@ import PokemonTable from "./Components/PokemonTable";
 function App() {
   const [filter, filterSet] = React.useState("");
   const [selectedItem, selectedItemSet] = React.useState(null);
-  const pokemon = useSelector((state) => state);
+  const pokemon = useSelector((state) => state.pokemonReducer.pokemon);
   const dispatch = useDispatch();
+  console.log(selectedItem);
   useEffect(() => {
     dispatch(fetchPokemon());
   }, [dispatch]);
-
   return (
     <div className="section">
       <h1 className="title">Pokemon search</h1>
