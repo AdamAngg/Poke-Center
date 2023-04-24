@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "./styles/styles.scss";
-
+import { MainLayout } from "./Pages/MainLayout";
 import PokemonInfo from "./Components/PokemonInfo";
 import PokemonFilter from "./Components/PokemonFilter";
 import PokemonTable from "./Components/PokemonTable";
+import { Navbar } from "./Components/Navbar";
 
 function App() {
   const [filter, filterSet] = React.useState("");
@@ -13,14 +14,14 @@ function App() {
   );
 
   return (
-    <div className="main">
-      <h1 className="title">Pokemon search</h1>
+    <MainLayout>
+      <Navbar />
       <PokemonFilter filter={filter} filterSet={filterSet} />
       <div className="grid">
         <PokemonTable filter={filter} />
         {currentPokemon && <PokemonInfo {...currentPokemon} />}
       </div>
-    </div>
+    </MainLayout>
   );
 }
 
