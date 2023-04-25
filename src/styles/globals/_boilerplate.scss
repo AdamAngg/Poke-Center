@@ -1,3 +1,6 @@
+@use "./_colors" as *;
+@use "./typhography" as *;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,14 +13,12 @@ html {
 }
 
 body {
+  background-color: $bg-color;
+  font-family: $titles-font;
   position: relative;
 }
 .title {
   text-align: center;
-}
-th {
-  text-align: left;
-  font-size: 1.6rem;
 }
 input {
   width: 100%;
@@ -25,14 +26,13 @@ input {
 }
 .main {
   margin: 0 auto;
-  width: 120rem;
+  width: 130rem;
   padding: 1rem;
 }
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.6rem;
-}
-h1 {
-  text-align: center;
+  &__2__columns {
+    grid-template-columns: 1fr 2.5fr;
+    gap: 2.6rem;
+  }
 }

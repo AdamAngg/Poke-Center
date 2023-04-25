@@ -16,7 +16,7 @@ function App() {
     <MainLayout>
       <Navbar />
       <PokemonFilter />
-      <div className="grid">
+      <div className="grid grid__2__columns">
         <PokemonTable />
         {currentPokemon && <PokemonInfo {...currentPokemon} />}
       </div>

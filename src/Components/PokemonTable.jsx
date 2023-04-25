@@ -15,10 +15,10 @@ const PokemonTable = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="pokemon-result">
       <div className="titles">
-        <h2>Pokemon</h2>
-        <h2>Type</h2>
+        <h3>Pokemon</h3>
+        <h3>Type</h3>
       </div>
 
       {pokemon

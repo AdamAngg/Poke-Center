@@ -1,0 +1,11 @@
+@use "../globals" as *;
+
+.titles {
+  display: flex;
+  margin: 1.6rem 0 1.6rem 0;
+
+  h3 {
+    font-size: $h3-size;
+    font-family: $text-font;
+  }
+}
