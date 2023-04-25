@@ -3,8 +3,11 @@ import PokemnonRow from "./PokemonRow";
 import { useDispatch, useSelector } from "react-redux";
 import { addCurrentPokemon, fetchPokemon } from "../store/pokemonSlice";
 
-const PokemonTable = ({ filter }) => {
+const PokemonTable = () => {
   const pokemon = useSelector((state) => state.pokemonReducer.pokemon);
+  const searchPokemon = useSelector(
+    (state) => state.pokemonReducer.searchPokemon
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -13,26 +16,21 @@ const PokemonTable = ({ filter }) => {
 
   return (
     <div>
-      <table width={"100%"}>
-        <thead>
-          <tr>
-            <th>Pokemon</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pokemon
-            .filter((pokemon) => pokemon.name.toLowerCase().includes(filter))
-            .slice(0, 20)
-            .map((pokemon) => (
-              <PokemnonRow
-                pokemon={pokemon}
-                key={pokemon.name + 151}
-                onSelect={(pokemon) => dispatch(addCurrentPokemon(pokemon))}
-              />
-            ))}
-        </tbody>
-      </table>
+      <div className="titles">
+        <h2>Pokemon</h2>
+        <h2>Type</h2>
+      </div>
+
+      {pokemon
+        .filter((pokemon) => pokemon.name.toLowerCase().includes(searchPokemon))
+        .slice(0, 20)
+        .map((pokemon) => (
+          <PokemnonRow
+            pokemon={pokemon}
+            key={pokemon.name + 151}
+            onSelect={(pokemon) => dispatch(addCurrentPokemon(pokemon))}
+          />
+        ))}
     </div>
   );
 };

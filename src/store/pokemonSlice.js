@@ -6,6 +6,7 @@ const initialState = {
   loading: false,
   error: "",
   currentPokemon: null,
+  searchPokemon: "",
 };
 
 export const fetchPokemon = createAsyncThunk("pokemon/fetchPokemon", () => {
@@ -20,6 +21,9 @@ export const pokemonSlice = createSlice({
   reducers: {
     addCurrentPokemon: (state, action) => {
       state.currentPokemon = action.payload;
+    },
+    addSearchPokemon: (state, action) => {
+      state.searchPokemon = action.payload;
     },
   },
   extraReducers(builder) {
@@ -38,5 +42,5 @@ export const pokemonSlice = createSlice({
     });
   },
 });
-export const { addCurrentPokemon } = pokemonSlice.actions;
+export const { addCurrentPokemon, addSearchPokemon } = pokemonSlice.actions;
 export default pokemonSlice.reducer;

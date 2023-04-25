@@ -2,12 +2,10 @@ import React from "react";
 
 const PokemnonRow = ({ pokemon, onSelect }) => {
   return (
-    <tr>
-      <td>{pokemon.name}</td>
-      <td>
-        <button onClick={() => onSelect(pokemon)}>Select</button>
-      </td>
-    </tr>
+    <div className="Pokemon-Container">
+      <p>{pokemon.name}</p>
+      <button onClick={() => onSelect(pokemon)}>Select</button>
+    </div>
   );
 };
 export default PokemnonRow;

@@ -8,7 +8,6 @@ import PokemonTable from "./Components/PokemonTable";
 import { Navbar } from "./Components/Navbar";
 
 function App() {
-  const [filter, filterSet] = React.useState("");
   const currentPokemon = useSelector(
     (state) => state.pokemonReducer.currentPokemon
   );
@@ -16,9 +15,9 @@ function App() {
   return (
     <MainLayout>
       <Navbar />
-      <PokemonFilter filter={filter} filterSet={filterSet} />
+      <PokemonFilter />
       <div className="grid">
-        <PokemonTable filter={filter} />
+        <PokemonTable />
         {currentPokemon && <PokemonInfo {...currentPokemon} />}
       </div>
     </MainLayout>
