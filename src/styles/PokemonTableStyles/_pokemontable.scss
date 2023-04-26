@@ -1,11 +1,29 @@
 @use "../globals" as *;
 
+.pokemon-results-container {
+  display: flex;
+  flex-direction: column;
+  background-color: $bg-color-pokemontable;
+  padding: 0 1.6rem 1.6rem 1.6rem;
+  grid-area: list;
+}
+.pokemon-container {
+  li {
+    list-style: none;
+  }
+  p {
+    font-size: $p-size;
+  }
+}
+
 .titles {
   display: flex;
   margin: 1.6rem 0 1.6rem 0;
+  justify-content: space-between;
 
   h3 {
     font-size: $h3-size;
     font-family: $text-font;
+    padding: 0 1.6rem 0 1.6rem;
   }
 }

@@ -6,6 +6,10 @@
   margin: 0;
   padding: 0;
 }
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
 html {
   font-size: 62.5%;
@@ -13,24 +17,35 @@ html {
 }
 
 body {
-  background-color: $bg-color;
+  background-image: linear-gradient(
+    to right bottom,
+    $bg-color,
+    $bg-color-secondary
+  );
   font-family: $titles-font;
   position: relative;
+  color: $txt-color;
 }
 .title {
   text-align: center;
 }
-input {
-  width: 100%;
-  font-size: 700;
-}
+
 .main {
-  margin: 0 auto;
-  width: 130rem;
-  padding: 1rem;
+  display: grid;
+  max-width: 120rem;
+  min-height: 95rem;
+  box-shadow: 0 2rem 6rem 0.5rem rgb(97 85 81 / 20%);
+  border-radius: 1rem;
+  background-color: $bg-color-content;
+  margin: 4vw auto;
+  overflow: hidden;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 2.6rem;
+  grid-template-areas:
+    "head head"
+    "list info";
 }
 .grid {
-  display: grid;
   &__2__columns {
     grid-template-columns: 1fr 2.5fr;
     gap: 2.6rem;

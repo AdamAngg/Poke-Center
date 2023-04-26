@@ -6,7 +6,7 @@ function PokemonInfo({ name }) {
   };
 
   return (
-    <div>
+    <div className="pokemoninfo-container">
       <h1>{capitalizeWord(name)}</h1>
     </div>
   );

@@ -9,3 +9,21 @@ $h3-size: 2.4rem;
 $h4-size: 2.2rem;
 $p-size: 1.6rem;
 $input-size: 1.4rem;
+
+h1,
+h2,
+h3,
+h4,
+p {
+  line-height: 1.1;
+  margin-top: 0;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+input:focus {
+  outline: none;
+}

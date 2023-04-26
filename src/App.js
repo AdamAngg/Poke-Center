@@ -5,7 +5,6 @@ import { MainLayout } from "./Pages/MainLayout";
 import PokemonInfo from "./Components/PokemonInfo";
 import PokemonFilter from "./Components/PokemonFilter";
 import PokemonTable from "./Components/PokemonTable";
-import { Navbar } from "./Components/Navbar";
 
 function App() {
   const currentPokemon = useSelector(
@@ -14,12 +13,9 @@ function App() {
 
   return (
     <MainLayout>
-      <Navbar />
       <PokemonFilter />
-      <div className="grid grid__2__columns">
-        <PokemonTable />
-        {currentPokemon && <PokemonInfo {...currentPokemon} />}
-      </div>
+      <PokemonTable />
+      {currentPokemon && <PokemonInfo {...currentPokemon} />}
     </MainLayout>
   );
 }
