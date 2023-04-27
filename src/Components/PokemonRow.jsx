@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { fetchCurrentPokemon } from "../store/pokemonInfoSlice";
 
 const PokemnonRow = ({ pokemon, onSelect }) => {
@@ -7,17 +7,26 @@ const PokemnonRow = ({ pokemon, onSelect }) => {
     return name.charAt(0).toUpperCase() + name.slice(1);
   };
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchCurrentPokemon(pokemon.url));
-  }, []);
-
-  const pokeColor = useSelector(
+  const [color, setColor] = useState(null);
+  const reduxValue = useSelector(
     (state) => state?.pokemonInfoReducer?.pokemonInfo?.types[0]?.type?.name
   );
-  console.log(pokeColor);
+  React.useEffect(() => {
+    dispatch(
+      fetchCurrentPokemon("https://pokeapi.co/api/v2/pokemon/" + pokemon.name)
+    );
+  }, [dispatch]);
+  React.useEffect(() => {
+    setColor(reduxValue);
+    console.log(color);
+  }, []);
+
   return (
     <li className="pokemon">
-      <figure className={"pokemon-preview pokemon-preview__" + pokeColor}>
+      <figure
+        key={pokemon.name}
+        className={"pokemon-preview pokemon-preview__" + color}
+      >
         <img src="" alt="" />
       </figure>
       <p className="pokemon-name">{capitalizeWord(pokemon.name)}</p>
