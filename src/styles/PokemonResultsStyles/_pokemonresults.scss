@@ -1,0 +1,95 @@
+@use "../globals" as *;
+
+.pokemon-results-container {
+  background-color: $bg-color-pokemontable;
+  padding: 0 1.6rem 1.6rem 1.6rem;
+  grid-area: list;
+}
+.pokemon-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  li {
+    list-style: none;
+  }
+  p {
+    font-size: $p-size;
+  }
+}
+.pokemon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.pokemon-preview {
+  flex: 0 0 4.6rem;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  height: 4.6rem;
+  background-color: #fff;
+  &__bug {
+    background-image: linear-gradient(to right bottom, #ffffff, #91e7bc);
+  }
+  &__electric {
+    background-image: linear-gradient(to right bottom, #ffffff, #d4e15b);
+  }
+  &__fire {
+    background-image: linear-gradient(to right bottom, #ffffff, #f34d4d);
+  }
+  &__grass {
+    background-image: linear-gradient(to right bottom, #ffffff, #30694c);
+  }
+  &__normal {
+    background-image: linear-gradient(to right bottom, #ffffff, #676868);
+  }
+  &__rock {
+    background-image: linear-gradient(to right bottom, #ffffff, #b9a34b);
+  }
+  &__dark {
+    background-image: linear-gradient(to right bottom, #ffffff, #05031f);
+  }
+  &__fairy {
+    background-image: linear-gradient(to right bottom, #ffffff, #d181e6);
+  }
+  &__flying {
+    background-image: linear-gradient(to right bottom, #ffffff, #9accf5);
+  }
+  &__poison {
+    background-image: linear-gradient(to right bottom, #ffffff, #9700e8);
+  }
+  &__stell {
+    background-image: linear-gradient(to right bottom, #ffffff, #bcc4c0);
+  }
+  &__dragon {
+    background-image: linear-gradient(to right bottom, #ffffff, #3d71a8);
+  }
+  &__fighting {
+    background-image: linear-gradient(to right bottom, #ffffff, #69332c);
+  }
+  &__ghost {
+    background-image: linear-gradient(to right bottom, #ffffff, #4f4a7a);
+  }
+  &__ice {
+    background-image: linear-gradient(to right bottom, #ffffff, #5ae1ff);
+  }
+  &__psychic {
+    background-image: linear-gradient(to right bottom, #ffffff, #ff07cd);
+  }
+  &__water {
+    background-image: linear-gradient(to right bottom, #ffffff, #1422dc);
+  }
+}
+
+.titles {
+  display: flex;
+  margin: 1.6rem 0 1.6rem 0;
+  justify-content: space-between;
+
+  h3 {
+    font-size: $h3-size;
+    font-family: $text-font;
+    padding: 0 1.6rem 0 1.6rem;
+  }
+}

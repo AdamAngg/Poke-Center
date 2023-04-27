@@ -29,9 +29,13 @@ body {
 .title {
   text-align: center;
 }
-
-.main {
+%grid {
   display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 2.6rem;
+}
+.main {
+  @extend %grid;
   max-width: 120rem;
   min-height: 95rem;
   box-shadow: 0 2rem 6rem 0.5rem rgb(97 85 81 / 20%);
@@ -39,15 +43,7 @@ body {
   background-color: $bg-color-content;
   margin: 4vw auto;
   overflow: hidden;
-  grid-template-columns: 1fr 2.5fr;
-  gap: 2.6rem;
   grid-template-areas:
     "head head"
     "list info";
-}
-.grid {
-  &__2__columns {
-    grid-template-columns: 1fr 2.5fr;
-    gap: 2.6rem;
-  }
 }

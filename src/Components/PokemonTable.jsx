@@ -8,29 +8,34 @@ const PokemonTable = () => {
   const searchPokemon = useSelector(
     (state) => state.pokemonReducer.searchPokemon
   );
+  const loading = useSelector((state) => state.pokemonReducer.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchPokemon());
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="pokemon-results-container">
       <div className="titles">
-        <h3>Pokemon</h3>
-        <h3>Info</h3>
+        <h3>Pokemon:</h3>
+        <h3>More info:</h3>
       </div>
-
-      {pokemon
-        .filter((pokemon) => pokemon.name.toLowerCase().includes(searchPokemon))
-        .slice(0, 20)
-        .map((pokemon) => (
-          <PokemnonRow
-            pokemon={pokemon}
-            key={pokemon.name + 151}
-            onSelect={(pokemon) => dispatch(addCurrentPokemon(pokemon))}
-          />
-        ))}
+      <ul className="pokemon-container">
+        {loading && <div>wait...</div>}
+        {pokemon
+          .filter((pokemon) =>
+            pokemon.name.toLowerCase().includes(searchPokemon)
+          )
+          .slice(0, 6)
+          .map((pokemon) => (
+            <PokemnonRow
+              pokemon={pokemon}
+              key={pokemon.name + 151}
+              onSelect={(pokemon) => dispatch(addCurrentPokemon(pokemon))}
+            />
+          ))}
+      </ul>
     </div>
   );
 };
