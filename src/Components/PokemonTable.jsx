@@ -18,23 +18,18 @@ const PokemonTable = () => {
     dispatch(fetchPokemon());
   }, [dispatch]);
   useMemo(() => {
-    let isCurrent = true;
     dispatch(emptyArr());
     pokemon
       .filter((pokemon) => pokemon.name.toLowerCase().includes(searchPokemon))
       .slice(0, 20)
-      .map((pokemon) => {
-        if (isCurrent) {
-          dispatch(
-            fetchCurrentPokemon(
-              "https://pokeapi.co/api/v2/pokemon/" + pokemon.name
-            )
-          );
-        }
-        return () => (isCurrent = false);
-      });
+      .map((pokemon) =>
+        dispatch(
+          fetchCurrentPokemon(
+            "https://pokeapi.co/api/v2/pokemon/" + pokemon.name
+          )
+        )
+      );
   }, [pokemon, searchPokemon]);
-  console.log(useSelector((state) => state.pokemonInfoReducer.pokemonColor));
   return (
     <div className="pokemon-results-container">
       <div className="titles">

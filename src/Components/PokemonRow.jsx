@@ -8,18 +8,23 @@ const PokemnonRow = ({ pokemonCurrent, onSelect }) => {
   };
   const dispatch = useDispatch();
   const pokemon = useSelector((state) => state.pokemonReducer.pokemon);
-  const pokemonID = pokemon.indexOf(pokemonCurrent, 0);
+  const searchPokemon = useSelector(
+    (state) => state.pokemonReducer.searchPokemon
+  );
 
   const pokemonArrayOfColors = useSelector(
-    (state) => state.pokemonInfoReducer.pokemonColor
-  );
-  const pokemonFotoArray = useSelector(
-    (state) => state.pokemonInfoReducer.pokemonFoto
+    (state) => state?.pokemonInfoReducer?.pokemonColor
   );
 
-  React.useEffect(() => {
-    dispatch(addID(pokemonID));
-  });
+  const pokemonID = pokemon
+    .filter((pokemon) => pokemon.name.toLowerCase().includes(searchPokemon))
+    .slice(0, 20)
+    .indexOf(pokemonCurrent, 0);
+
+  const pokemonFotoArray = useSelector(
+    (state) => state?.pokemonInfoReducer?.pokemonFoto
+  );
+
   return (
     <li className="pokemon">
       <figure
