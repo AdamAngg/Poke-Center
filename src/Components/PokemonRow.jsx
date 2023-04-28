@@ -1,39 +1,33 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchCurrentPokemon } from "../store/pokemonInfoSlice";
+import React from "react";
+import { useSelector } from "react-redux";
 
-const PokemnonRow = ({ pokemon, onSelect }) => {
+const PokemnonRow = ({ pokemonCurrent, onSelect }) => {
   const capitalizeWord = (name) => {
     return name.charAt(0).toUpperCase() + name.slice(1);
   };
-  const dispatch = useDispatch();
-  const [color, setColor] = useState(null);
-  const reduxValue = useSelector(
-    (state) => state?.pokemonInfoReducer?.pokemonInfo?.types[0]?.type?.name
+
+  const pokemonArrayOfColors = useSelector(
+    (state) => state?.pokemonInfoReducer?.pokemonColor
   );
-  React.useEffect(() => {
-    dispatch(
-      fetchCurrentPokemon("https://pokeapi.co/api/v2/pokemon/" + pokemon.name)
-    );
-  }, [dispatch]);
-  React.useEffect(() => {
-    setColor(reduxValue);
-    console.log(color);
-  }, []);
+  const pokemon = useSelector((state) => state.pokemonReducer.pokemon);
+  const colorBelonging = pokemon.indexOf(pokemonCurrent, 0);
 
   return (
     <li className="pokemon">
       <figure
-        key={pokemon.name}
-        className={"pokemon-preview pokemon-preview__" + color}
+        key={pokemonCurrent.name}
+        className={
+          "pokemon-preview pokemon-preview__" +
+          pokemonArrayOfColors[colorBelonging]
+        }
       >
         <img src="" alt="" />
       </figure>
-      <p className="pokemon-name">{capitalizeWord(pokemon.name)}</p>
+      <p className="pokemon-name">{capitalizeWord(pokemonCurrent.name)}</p>
       <button
         className="pokemon-btn"
         onClick={() => {
-          onSelect(pokemon);
+          onSelect(pokemonCurrent);
         }}
       >
         Select

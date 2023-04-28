@@ -6,6 +6,7 @@ const initialState = {
   id: null,
   liked: false,
   loading: false,
+  pokemonColor: [],
 };
 
 export const fetchCurrentPokemon = createAsyncThunk(
@@ -26,6 +27,7 @@ export const pokemonInfoSlice = createSlice({
     builder.addCase(fetchCurrentPokemon.fulfilled, (state, action) => {
       state.loading = false;
       state.pokemonInfo = action.payload;
+      state.pokemonColor.push(action.payload.types[0].type.name);
       state.error = "";
     });
     builder.addCase(fetchCurrentPokemon.rejected, (state, action) => {

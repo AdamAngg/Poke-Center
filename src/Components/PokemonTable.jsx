@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import PokemnonRow from "./PokemonRow";
 import { useDispatch, useSelector } from "react-redux";
 import { addCurrentPokemon, fetchPokemon } from "../store/pokemonSlice";
-
+import { fetchCurrentPokemon } from "../store/pokemonInfoSlice";
 const PokemonTable = () => {
   const pokemon = useSelector((state) => state.pokemonReducer.pokemon);
   const searchPokemon = useSelector(
@@ -13,7 +13,7 @@ const PokemonTable = () => {
 
   useEffect(() => {
     dispatch(fetchPokemon());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="pokemon-results-container">
@@ -27,14 +27,21 @@ const PokemonTable = () => {
           .filter((pokemon) =>
             pokemon.name.toLowerCase().includes(searchPokemon)
           )
-          .slice(0, 6)
-          .map((pokemon) => (
-            <PokemnonRow
-              pokemon={pokemon}
-              key={pokemon.name + 151}
-              onSelect={(pokemon) => dispatch(addCurrentPokemon(pokemon))}
-            />
-          ))}
+          .slice(0, 20)
+          .map((pokemon) => {
+            dispatch(
+              fetchCurrentPokemon(
+                "https://pokeapi.co/api/v2/pokemon/" + pokemon.name
+              )
+            );
+            return (
+              <PokemnonRow
+                pokemonCurrent={pokemon}
+                key={pokemon.name + 151}
+                onSelect={(pokemon) => dispatch(addCurrentPokemon(pokemon))}
+              />
+            );
+          })}
       </ul>
     </div>
   );
