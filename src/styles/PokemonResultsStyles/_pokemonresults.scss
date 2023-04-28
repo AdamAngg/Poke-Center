@@ -81,7 +81,10 @@
     background-image: linear-gradient(to right bottom, #ffffff, #1422dc);
   }
 }
-
+.pokemon-img {
+  position: absolute;
+  height: 100%;
+}
 .titles {
   display: flex;
   margin: 1.6rem 0 1.6rem 0;

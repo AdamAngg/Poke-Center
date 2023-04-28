@@ -7,6 +7,7 @@ const initialState = {
   liked: false,
   loading: false,
   pokemonColor: [],
+  pokemonFoto: [],
 };
 
 export const fetchCurrentPokemon = createAsyncThunk(
@@ -19,7 +20,11 @@ export const fetchCurrentPokemon = createAsyncThunk(
 export const pokemonInfoSlice = createSlice({
   name: "pokemon",
   initialState,
-  reducers: {},
+  reducers: {
+    addID(state, action) {
+      state.id = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder.addCase(fetchCurrentPokemon.pending, (state) => {
       state.loading = true;
@@ -28,6 +33,7 @@ export const pokemonInfoSlice = createSlice({
       state.loading = false;
       state.pokemonInfo = action.payload;
       state.pokemonColor.push(action.payload.types[0].type.name);
+      state.pokemonFoto.push(action.payload.sprites.front_default);
       state.error = "";
     });
     builder.addCase(fetchCurrentPokemon.rejected, (state, action) => {
@@ -37,5 +43,5 @@ export const pokemonInfoSlice = createSlice({
     });
   },
 });
-
+export const { addID } = pokemonInfoSlice.actions;
 export default pokemonInfoSlice.reducer;
