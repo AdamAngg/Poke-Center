@@ -8,15 +8,15 @@ const PokemnonRow = ({ pokemonCurrent, onSelect }) => {
   };
   const dispatch = useDispatch();
   const pokemon = useSelector((state) => state.pokemonReducer.pokemon);
-  const loading = useSelector((state) => state.pokemonInfoReducer.loading);
+  const pokemonID = pokemon.indexOf(pokemonCurrent, 0);
 
   const pokemonArrayOfColors = useSelector(
-    (state) => state?.pokemonInfoReducer?.pokemonColor
+    (state) => state.pokemonInfoReducer.pokemonColor
   );
-  const pokemonID = pokemon.indexOf(pokemonCurrent, 0);
   const pokemonFotoArray = useSelector(
     (state) => state.pokemonInfoReducer.pokemonFoto
   );
+
   React.useEffect(() => {
     dispatch(addID(pokemonID));
   });

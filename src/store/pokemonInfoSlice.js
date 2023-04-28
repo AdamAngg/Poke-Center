@@ -24,6 +24,10 @@ export const pokemonInfoSlice = createSlice({
     addID(state, action) {
       state.id = action.payload;
     },
+    emptyArr(state) {
+      state.pokemonColor = [];
+      state.pokemonFoto = [];
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchCurrentPokemon.pending, (state) => {
@@ -43,5 +47,5 @@ export const pokemonInfoSlice = createSlice({
     });
   },
 });
-export const { addID } = pokemonInfoSlice.actions;
+export const { addID, emptyArr } = pokemonInfoSlice.actions;
 export default pokemonInfoSlice.reducer;

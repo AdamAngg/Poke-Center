@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import PokemnonRow from "./PokemonRow";
 import { useDispatch, useSelector } from "react-redux";
 import { addCurrentPokemon, fetchPokemon } from "../store/pokemonSlice";
 import { fetchCurrentPokemon } from "../store/pokemonInfoSlice";
 import LoadingSpinner from "./Spinner";
+import { emptyArr } from "../store/pokemonInfoSlice";
+
 const PokemonTable = () => {
   const pokemon = useSelector((state) => state.pokemonReducer.pokemon);
   const searchPokemon = useSelector(
@@ -15,14 +17,24 @@ const PokemonTable = () => {
   useEffect(() => {
     dispatch(fetchPokemon());
   }, [dispatch]);
-  pokemon
-    .slice(0, 20)
-    .map((pokemon) =>
-      dispatch(
-        fetchCurrentPokemon("https://pokeapi.co/api/v2/pokemon/" + pokemon.name)
-      )
-    );
-
+  useMemo(() => {
+    let isCurrent = true;
+    dispatch(emptyArr());
+    pokemon
+      .filter((pokemon) => pokemon.name.toLowerCase().includes(searchPokemon))
+      .slice(0, 20)
+      .map((pokemon) => {
+        if (isCurrent) {
+          dispatch(
+            fetchCurrentPokemon(
+              "https://pokeapi.co/api/v2/pokemon/" + pokemon.name
+            )
+          );
+        }
+        return () => (isCurrent = false);
+      });
+  }, [pokemon, searchPokemon]);
+  console.log(useSelector((state) => state.pokemonInfoReducer.pokemonColor));
   return (
     <div className="pokemon-results-container">
       <div className="titles">
@@ -31,6 +43,7 @@ const PokemonTable = () => {
       </div>
       <ul className="pokemon-container">
         {loading && <LoadingSpinner />}
+
         {!loading &&
           pokemon
             .filter((pokemon) =>
