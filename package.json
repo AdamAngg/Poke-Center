@@ -1,7 +1,7 @@
 {
   "name": "pokemon-center",
   "version": "0.1.0",
-  "homepage": "https://adamangg.github.io/poke-center",
+  "homepage": "http://adamangg.github.io/Poke-Center/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -17,6 +17,8 @@
     "sass": "^1.61.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
