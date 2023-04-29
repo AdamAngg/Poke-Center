@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Poke-Center/static/css/main.6f796b8c.css",
+    "main.js": "/Poke-Center/static/js/main.7bde4597.js",
+    "index.html": "/Poke-Center/index.html",
+    "main.6f796b8c.css.map": "/Poke-Center/static/css/main.6f796b8c.css.map",
+    "main.7bde4597.js.map": "/Poke-Center/static/js/main.7bde4597.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6f796b8c.css",
+    "static/js/main.7bde4597.js"
+  ]
+}
