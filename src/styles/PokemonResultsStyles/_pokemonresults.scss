@@ -2,7 +2,6 @@
 
 .pokemon-results-container {
   background-color: $bg-color-pokemontable;
-  padding: 0 1.6rem 1.6rem 1.6rem;
   grid-area: list;
 }
 .pokemon-container {
@@ -19,15 +18,20 @@
 .pokemon {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  padding: 1.2rem;
+  transition: all 0.3s;
+}
+.pokemon:hover {
+  background-color: $bg-color-hover;
 }
 .pokemon-preview {
-  flex: 0 0 4.6rem;
+  flex: 0 0 5.2rem;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
-  height: 4.6rem;
+  height: 5.2rem;
   background-color: #fff;
   &__bug {
     background-image: linear-gradient(to right bottom, #ffffff, #91e7bc);

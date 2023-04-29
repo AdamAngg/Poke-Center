@@ -17,19 +17,13 @@ const PokemonTable = () => {
   useEffect(() => {
     dispatch(fetchPokemon());
   }, [dispatch]);
-  useMemo(() => {
+  useEffect(() => {
     dispatch(emptyArr());
     pokemon
       .filter((pokemon) => pokemon.name.toLowerCase().includes(searchPokemon))
       .slice(0, 20)
-      .map((pokemon) =>
-        dispatch(
-          fetchCurrentPokemon(
-            "https://pokeapi.co/api/v2/pokemon/" + pokemon.name
-          )
-        )
-      );
-  }, [pokemon, searchPokemon]);
+      .map((pokemon) => dispatch(fetchCurrentPokemon(pokemon.url)));
+  }, [pokemon, searchPokemon, dispatch]);
   return (
     <div className="pokemon-results-container">
       <div className="titles">
