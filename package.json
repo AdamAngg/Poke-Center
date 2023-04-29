@@ -1,6 +1,7 @@
 {
-  "name": "pokemon-search",
+  "name": "pokemon-center",
   "version": "0.1.0",
+  "homepage": "https://adamangg.github.io/poke-center",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -40,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "web-vitals": "^3.3.1"
   }
 }

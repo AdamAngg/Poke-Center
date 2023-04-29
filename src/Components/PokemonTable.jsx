@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect } from "react";
 import PokemnonRow from "./PokemonRow";
 import { useDispatch, useSelector } from "react-redux";
 import { addCurrentPokemon, fetchPokemon } from "../store/pokemonSlice";

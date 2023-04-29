@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  pokemonInfo: null,
   id: null,
   liked: false,
   loading: false,
@@ -35,9 +34,8 @@ export const pokemonInfoSlice = createSlice({
     });
     builder.addCase(fetchCurrentPokemon.fulfilled, (state, action) => {
       state.loading = false;
-      state.pokemonInfo = action.payload;
-      state.pokemonColor.push(action.payload.types[0].type.name);
-      state.pokemonFoto.push(action.payload.sprites.front_default);
+      state.pokemonColor.push(action.payload?.types[0]?.type?.name);
+      state.pokemonFoto.push(action.payload?.sprites?.front_default);
       state.error = "";
     });
     builder.addCase(fetchCurrentPokemon.rejected, (state, action) => {

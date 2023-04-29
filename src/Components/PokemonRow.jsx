@@ -34,6 +34,7 @@ const PokemnonRow = ({ pokemonCurrent, onSelect }) => {
         <img src={pokemonFotoArray[pokemonID]} className="pokemon-img" alt="" />
       </figure>
       <p className="pokemon-name">{capitalizeWord(pokemonCurrent.name)}</p>
+
       <button
         className="pokemon-btn"
         onClick={() => {
