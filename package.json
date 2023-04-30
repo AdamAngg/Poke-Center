@@ -1,8 +1,8 @@
 {
   "name": "pokemon-center",
   "version": "0.1.0",
-  "homepage": "http://adamangg.github.io/Poke-Center/",
-  "private": true,
+  "homepage": "https://adamangg.github.io/Poke-Center/",
+  "private": false,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",

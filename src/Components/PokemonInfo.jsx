@@ -1,6 +1,6 @@
 import React from "react";
 
-function PokemonInfo({ name }) {
+export function PokemonInfo({ name }) {
   const capitalizeWord = (name) => {
     return name.charAt(0).toUpperCase() + name.slice(1);
   };
@@ -11,4 +11,3 @@ function PokemonInfo({ name }) {
     </div>
   );
 }
-export default PokemonInfo;

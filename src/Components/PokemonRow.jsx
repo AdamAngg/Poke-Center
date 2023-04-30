@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-const PokemnonRow = ({ pokemonCurrent, onSelect }) => {
+export const PokemnonRow = ({ pokemonCurrent, onSelect }) => {
   const capitalizeWord = (name) => {
     return name.charAt(0).toUpperCase() + name.slice(1);
   };
@@ -15,7 +15,9 @@ const PokemnonRow = ({ pokemonCurrent, onSelect }) => {
   );
 
   const pokemonID = pokemon
-    .filter((pokemon) => pokemon.name.toLowerCase().includes(searchPokemon))
+    .filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(toLowerCase(searchPokemon))
+    )
     .slice(0, 20)
     .indexOf(pokemonCurrent, 0);
 
@@ -46,4 +48,3 @@ const PokemnonRow = ({ pokemonCurrent, onSelect }) => {
     </li>
   );
 };
-export default PokemnonRow;

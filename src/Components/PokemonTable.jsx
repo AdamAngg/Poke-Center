@@ -6,12 +6,12 @@ import { fetchCurrentPokemon } from "../store/pokemonInfoSlice";
 import LoadingSpinner from "./Spinner";
 import { emptyArr } from "../store/pokemonInfoSlice";
 
-const PokemonTable = () => {
+export const PokemonTable = () => {
   const pokemon = useSelector((state) => state.pokemonReducer.pokemon);
   const searchPokemon = useSelector(
     (state) => state.pokemonReducer.searchPokemon
   );
-  const loading = useSelector((state) => state.pokemonReducer.loading);
+  const isloading = useSelector((state) => state.pokemonReducer.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,7 +20,9 @@ const PokemonTable = () => {
   useEffect(() => {
     dispatch(emptyArr());
     pokemon
-      .filter((pokemon) => pokemon.name.toLowerCase().includes(searchPokemon))
+      .filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(toLowerCase(searchPokemon))
+      )
       .slice(0, 20)
       .map((pokemon) => dispatch(fetchCurrentPokemon(pokemon.url)));
   }, [pokemon, searchPokemon, dispatch]);
@@ -31,12 +33,12 @@ const PokemonTable = () => {
         <h3>More info:</h3>
       </div>
       <ul className="pokemon-container">
-        {loading && <LoadingSpinner />}
+        {isloading && <LoadingSpinner />}
 
-        {!loading &&
+        {!isloading &&
           pokemon
             .filter((pokemon) =>
-              pokemon.name.toLowerCase().includes(searchPokemon)
+              pokemon.name.toLowerCase().includes(toLowerCase(searchPokemon))
             )
             .slice(0, 20)
             .map((pokemon) => {
@@ -52,4 +54,3 @@ const PokemonTable = () => {
     </div>
   );
 };
-export default PokemonTable;
