@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import PokemnonRow from "./PokemonRow";
+import { PokemnonRow } from "./PokemonRow";
 import { useDispatch, useSelector } from "react-redux";
 import { addCurrentPokemon, fetchPokemon } from "../store/pokemonSlice";
 import { fetchCurrentPokemon } from "../store/pokemonInfoSlice";
@@ -13,16 +13,13 @@ export const PokemonTable = () => {
   );
   const isloading = useSelector((state) => state.pokemonReducer.loading);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(fetchPokemon());
   }, [dispatch]);
   useEffect(() => {
     dispatch(emptyArr());
     pokemon
-      .filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(toLowerCase(searchPokemon))
-      )
+      .filter((pokemon) => pokemon.name.toLowerCase().includes(searchPokemon))
       .slice(0, 20)
       .map((pokemon) => dispatch(fetchCurrentPokemon(pokemon.url)));
   }, [pokemon, searchPokemon, dispatch]);
@@ -38,7 +35,7 @@ export const PokemonTable = () => {
         {!isloading &&
           pokemon
             .filter((pokemon) =>
-              pokemon.name.toLowerCase().includes(toLowerCase(searchPokemon))
+              pokemon.name.toLowerCase().includes(searchPokemon)
             )
             .slice(0, 20)
             .map((pokemon) => {

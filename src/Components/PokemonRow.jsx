@@ -15,9 +15,7 @@ export const PokemnonRow = ({ pokemonCurrent, onSelect }) => {
   );
 
   const pokemonID = pokemon
-    .filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(toLowerCase(searchPokemon))
-    )
+    .filter((pokemon) => pokemon.name.toLowerCase().includes(searchPokemon))
     .slice(0, 20)
     .indexOf(pokemonCurrent, 0);
 
