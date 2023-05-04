@@ -11,18 +11,17 @@ export const PokemonTable = () => {
   const searchPokemon = useSelector(
     (state) => state.pokemonReducer.searchPokemon
   );
-  const isloading = useSelector((state) => state.pokemonReducer.loading);
+  const isLoading = useSelector((state) => state.pokemonReducer.loading);
   const dispatch = useDispatch();
+  const info = useSelector((state) => state.pokemonInfoReducer.pokaInfo);
+
   useEffect(() => {
     dispatch(fetchPokemon());
-  }, [dispatch]);
+  }, []);
+
   useEffect(() => {
-    dispatch(emptyArr());
-    pokemon
-      .filter((pokemon) => pokemon.name.toLowerCase().includes(searchPokemon))
-      .slice(0, 20)
-      .map((pokemon) => dispatch(fetchCurrentPokemon(pokemon.url)));
-  }, [pokemon, searchPokemon, dispatch]);
+    if (isLoading === "loaded") dispatch(fetchCurrentPokemon());
+  }, [isLoading]);
   return (
     <div className="pokemon-results-container">
       <div className="titles">
@@ -30,9 +29,7 @@ export const PokemonTable = () => {
         <h3>More info:</h3>
       </div>
       <ul className="pokemon-container">
-        {isloading && <LoadingSpinner />}
-
-        {!isloading &&
+        {isLoading === "loaded" &&
           pokemon
             .filter((pokemon) =>
               pokemon.name.toLowerCase().includes(searchPokemon)

@@ -1,18 +1,31 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { pokemonSliceActions } from "./pokemonSlice";
 
 const initialState = {
+  pokaInfo: [],
   id: null,
   liked: false,
-  loading: false,
+  loading: null,
   pokemonColor: [],
   pokemonFoto: [],
 };
 
 export const fetchCurrentPokemon = createAsyncThunk(
   "pokemon/fetchCurrentPokemon",
-  (URL) => {
-    return axios.get(URL).then((response) => response.data);
+  async (_, { getState }) => {
+    try {
+      const pokemon = await getState().pokemonReducer.pokemon;
+
+      const urlsArray = pokemon.map((pokemon) => pokemon.url);
+      const responses = await axios.all(urlsArray.map((url) => axios.get(url)));
+      const results = responses.map((response) => response.data);
+      console.log(results);
+      return results;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
   }
 );
 
@@ -30,16 +43,15 @@ export const pokemonInfoSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(fetchCurrentPokemon.pending, (state) => {
-      state.loading = true;
+      state.loading = "true";
     });
     builder.addCase(fetchCurrentPokemon.fulfilled, (state, action) => {
-      state.loading = false;
-      state.pokemonColor.push(action.payload?.types[0]?.type?.name);
-      state.pokemonFoto.push(action.payload?.sprites?.front_default);
+      state.loading = "loaded";
+      state.pokaInfo = action.payload;
       state.error = "";
     });
     builder.addCase(fetchCurrentPokemon.rejected, (state, action) => {
-      state.loading = false;
+      state.loading = "false";
       state.pokemonInfo = [];
       state.error = action.error.message;
     });
