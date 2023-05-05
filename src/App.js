@@ -6,7 +6,7 @@ import { PokemonInfo } from "./components/PokemonInfo";
 import { PokemonList } from "./components/PokemonList";
 import { Header } from "./components/Header";
 
-function App() {
+export const App = () => {
   const currentlySelectedPokemon = useSelector(
     (state) => state.pokemonReducer.currentlySelectedPokemon
   );
@@ -20,6 +20,4 @@ function App() {
       )}
     </MainLayout>
   );
-}
-
-export default App;
+};

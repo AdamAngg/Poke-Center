@@ -6,6 +6,7 @@ export const Header = () => {
   const dispatch = useDispatch();
   return (
     <header className="header">
+      <img src={require("../images/logo.png")} alt="logo" />
       <input
         className="navbar__filter"
         onChange={(evt) =>
