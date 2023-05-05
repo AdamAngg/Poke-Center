@@ -6,6 +6,10 @@ import { Navbar } from "./Navbar";
 export const PokemonFilter = () => {
   const dispatch = useDispatch();
   return (
-    <Navbar onChange={(evt) => dispatch(addSearchPokemon(evt.target.value))} />
+    <Navbar
+      onChange={(evt) =>
+        dispatch(addSearchPokemon(evt.target.value.toLowerCase()))
+      }
+    />
   );
 };

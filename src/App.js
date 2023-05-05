@@ -4,7 +4,7 @@ import "./styles/styles.scss";
 import { MainLayout } from "./components/MainLayout";
 import { PokemonFilter } from "./components/PokemonFilter";
 import { PokemonInfo } from "./components/PokemonInfo";
-import { PokemonTable } from "./components/PokemonTable";
+import { PokemonList } from "./components/PokemonList";
 
 function App() {
   const currentPokemon = useSelector(
@@ -14,7 +14,7 @@ function App() {
   return (
     <MainLayout>
       <PokemonFilter />
-      <PokemonTable />
+      <PokemonList />
       {currentPokemon && <PokemonInfo {...currentPokemon} />}
     </MainLayout>
   );

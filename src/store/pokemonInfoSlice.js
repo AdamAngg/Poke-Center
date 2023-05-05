@@ -1,31 +1,27 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { pokemonSliceActions } from "./pokemonSlice";
 
 const initialState = {
-  pokaInfo: [],
+  pokemonExtendedInfoArray: [],
   id: null,
+  error: "",
   liked: false,
   loading: null,
-  pokemonColor: [],
-  pokemonFoto: [],
 };
 
 export const fetchCurrentPokemon = createAsyncThunk(
   "pokemon/fetchCurrentPokemon",
   async (_, { getState }) => {
-    try {
-      const pokemon = await getState().pokemonReducer.pokemon;
-
-      const urlsArray = pokemon.map((pokemon) => pokemon.url);
-      const responses = await axios.all(urlsArray.map((url) => axios.get(url)));
-      const results = responses.map((response) => response.data);
-      console.log(results);
-      return results;
-    } catch (err) {
-      console.error(err);
-      throw err;
-    }
+    const pokemon = await getState().pokemonReducer.pokemon;
+    const pokemonSmallerArray = pokemon
+      .filter((pokemon) =>
+        pokemon.name.includes(getState().pokemonReducer.searchedPokemon)
+      )
+      .slice(0, 20);
+    const urlsArray = pokemonSmallerArray.map((pokemon) => pokemon.url);
+    const responses = await axios.all(urlsArray.map((url) => axios.get(url)));
+    const results = responses.map((response) => response.data);
+    return results;
   }
 );
 
@@ -47,7 +43,7 @@ export const pokemonInfoSlice = createSlice({
     });
     builder.addCase(fetchCurrentPokemon.fulfilled, (state, action) => {
       state.loading = "loaded";
-      state.pokaInfo = action.payload;
+      state.pokemonExtendedInfoArray = action.payload;
       state.error = "";
     });
     builder.addCase(fetchCurrentPokemon.rejected, (state, action) => {

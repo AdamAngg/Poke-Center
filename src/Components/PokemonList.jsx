@@ -3,17 +3,14 @@ import { PokemnonRow } from "./PokemonRow";
 import { useDispatch, useSelector } from "react-redux";
 import { addCurrentPokemon, fetchPokemon } from "../store/pokemonSlice";
 import { fetchCurrentPokemon } from "../store/pokemonInfoSlice";
-import LoadingSpinner from "./Spinner";
-import { emptyArr } from "../store/pokemonInfoSlice";
 
-export const PokemonTable = () => {
+export const PokemonList = () => {
   const pokemon = useSelector((state) => state.pokemonReducer.pokemon);
-  const searchPokemon = useSelector(
-    (state) => state.pokemonReducer.searchPokemon
+  const searchedPokemon = useSelector(
+    (state) => state.pokemonReducer.searchedPokemon
   );
   const isLoading = useSelector((state) => state.pokemonReducer.loading);
   const dispatch = useDispatch();
-  const info = useSelector((state) => state.pokemonInfoReducer.pokaInfo);
 
   useEffect(() => {
     dispatch(fetchPokemon());
@@ -21,7 +18,7 @@ export const PokemonTable = () => {
 
   useEffect(() => {
     if (isLoading === "loaded") dispatch(fetchCurrentPokemon());
-  }, [isLoading]);
+  }, [isLoading, searchedPokemon]);
   return (
     <div className="pokemon-results-container">
       <div className="titles">
@@ -32,7 +29,7 @@ export const PokemonTable = () => {
         {isLoading === "loaded" &&
           pokemon
             .filter((pokemon) =>
-              pokemon.name.toLowerCase().includes(searchPokemon)
+              pokemon.name.toLowerCase().includes(searchedPokemon)
             )
             .slice(0, 20)
             .map((pokemon) => {

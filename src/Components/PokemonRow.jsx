@@ -1,11 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 
 export const PokemnonRow = ({ pokemonCurrent, onSelect }) => {
-  const capitalizeWord = (name) => {
-    return name.charAt(0).toUpperCase() + name.slice(1);
-  };
-
   return (
     <li className="pokemon">
       <figure
@@ -14,7 +10,9 @@ export const PokemnonRow = ({ pokemonCurrent, onSelect }) => {
       >
         <img className="pokemon-img" alt="" />
       </figure>
-      <p className="pokemon-name">{capitalizeWord(pokemonCurrent.name)}</p>
+      <p className="pokemon-name">
+        {capitalizeFirstLetter(pokemonCurrent.name)}
+      </p>
 
       <button
         className="pokemon-btn"
