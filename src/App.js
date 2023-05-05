@@ -2,20 +2,22 @@ import React from "react";
 import { useSelector } from "react-redux";
 import "./styles/styles.scss";
 import { MainLayout } from "./components/MainLayout";
-import { PokemonFilter } from "./components/PokemonFilter";
 import { PokemonInfo } from "./components/PokemonInfo";
 import { PokemonList } from "./components/PokemonList";
+import { Header } from "./components/Header";
 
 function App() {
-  const currentPokemon = useSelector(
-    (state) => state.pokemonReducer.currentPokemon
+  const currentlySelectedPokemon = useSelector(
+    (state) => state.pokemonReducer.currentlySelectedPokemon
   );
 
   return (
     <MainLayout>
-      <PokemonFilter />
+      <Header />
       <PokemonList />
-      {currentPokemon && <PokemonInfo {...currentPokemon} />}
+      {currentlySelectedPokemon && (
+        <PokemonInfo {...currentlySelectedPokemon} />
+      )}
     </MainLayout>
   );
 }

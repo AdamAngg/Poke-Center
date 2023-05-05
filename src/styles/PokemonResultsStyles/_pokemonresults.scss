@@ -4,86 +4,105 @@
   background-color: $bg-color-pokemontable;
   grid-area: list;
 }
-.pokemon-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  li {
-    list-style: none;
-  }
+.results {
+  padding: 3rem 0;
+  list-style: none;
+  margin-bottom: 2rem;
   p {
     font-size: $p-size;
+    color: $txt-color-secondary;
+  }
+  h4 {
+    font-size: $h4-size;
   }
 }
-.pokemon {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  padding: 1.2rem;
-  transition: all 0.3s;
+.element {
+  cursor: pointer;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 3.25rem;
+    transition: all 0.3s;
+    border-right: 1px solid #fff;
+    text-decoration: none;
+  }
+  &__data {
+    display: grid;
+    width: 100%;
+    row-gap: 0.1rem;
+  }
+  &__name {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  &__jname {
+    text-transform: uppercase;
+  }
+
+  &__preview {
+    flex: 0 0 5.2rem;
+    margin-right: 1.2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    height: 5.2rem;
+    background-color: #fff;
+    &__bug {
+      background-image: linear-gradient(to right bottom, #ffffff, #91e7bc);
+    }
+    &__electric {
+      background-image: linear-gradient(to right bottom, #ffffff, #d4e15b);
+    }
+    &__fire {
+      background-image: linear-gradient(to right bottom, #ffffff, #f34d4d);
+    }
+    &__grass {
+      background-image: linear-gradient(to right bottom, #ffffff, #30694c);
+    }
+    &__normal {
+      background-image: linear-gradient(to right bottom, #ffffff, #676868);
+    }
+    &__rock {
+      background-image: linear-gradient(to right bottom, #ffffff, #b9a34b);
+    }
+    &__dark {
+      background-image: linear-gradient(to right bottom, #ffffff, #05031f);
+    }
+    &__fairy {
+      background-image: linear-gradient(to right bottom, #ffffff, #d181e6);
+    }
+    &__flying {
+      background-image: linear-gradient(to right bottom, #ffffff, #9accf5);
+    }
+    &__poison {
+      background-image: linear-gradient(to right bottom, #ffffff, #9700e8);
+    }
+    &__stell {
+      background-image: linear-gradient(to right bottom, #ffffff, #bcc4c0);
+    }
+    &__dragon {
+      background-image: linear-gradient(to right bottom, #ffffff, #3d71a8);
+    }
+    &__fighting {
+      background-image: linear-gradient(to right bottom, #ffffff, #69332c);
+    }
+    &__ghost {
+      background-image: linear-gradient(to right bottom, #ffffff, #4f4a7a);
+    }
+    &__ice {
+      background-image: linear-gradient(to right bottom, #ffffff, #5ae1ff);
+    }
+    &__psychic {
+      background-image: linear-gradient(to right bottom, #ffffff, #ff07cd);
+    }
+    &__water {
+      background-image: linear-gradient(to right bottom, #ffffff, #1422dc);
+    }
+  }
 }
-.pokemon:hover {
+.element:hover {
   background-color: $bg-color-hover;
-}
-.pokemon-preview {
-  flex: 0 0 5.2rem;
-  border-radius: 50%;
-  overflow: hidden;
-  position: relative;
-  height: 5.2rem;
-  background-color: #fff;
-  &__bug {
-    background-image: linear-gradient(to right bottom, #ffffff, #91e7bc);
-  }
-  &__electric {
-    background-image: linear-gradient(to right bottom, #ffffff, #d4e15b);
-  }
-  &__fire {
-    background-image: linear-gradient(to right bottom, #ffffff, #f34d4d);
-  }
-  &__grass {
-    background-image: linear-gradient(to right bottom, #ffffff, #30694c);
-  }
-  &__normal {
-    background-image: linear-gradient(to right bottom, #ffffff, #676868);
-  }
-  &__rock {
-    background-image: linear-gradient(to right bottom, #ffffff, #b9a34b);
-  }
-  &__dark {
-    background-image: linear-gradient(to right bottom, #ffffff, #05031f);
-  }
-  &__fairy {
-    background-image: linear-gradient(to right bottom, #ffffff, #d181e6);
-  }
-  &__flying {
-    background-image: linear-gradient(to right bottom, #ffffff, #9accf5);
-  }
-  &__poison {
-    background-image: linear-gradient(to right bottom, #ffffff, #9700e8);
-  }
-  &__stell {
-    background-image: linear-gradient(to right bottom, #ffffff, #bcc4c0);
-  }
-  &__dragon {
-    background-image: linear-gradient(to right bottom, #ffffff, #3d71a8);
-  }
-  &__fighting {
-    background-image: linear-gradient(to right bottom, #ffffff, #69332c);
-  }
-  &__ghost {
-    background-image: linear-gradient(to right bottom, #ffffff, #4f4a7a);
-  }
-  &__ice {
-    background-image: linear-gradient(to right bottom, #ffffff, #5ae1ff);
-  }
-  &__psychic {
-    background-image: linear-gradient(to right bottom, #ffffff, #ff07cd);
-  }
-  &__water {
-    background-image: linear-gradient(to right bottom, #ffffff, #1422dc);
-  }
 }
 .pokemon-img {
   position: absolute;

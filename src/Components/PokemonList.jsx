@@ -25,11 +25,7 @@ export const PokemonList = () => {
 
   return (
     <div className="pokemon-results-container">
-      <div className="titles">
-        <h3>Pokemon:</h3>
-        <h3>More info:</h3>
-      </div>
-      <ul className="pokemon-container">
+      <ul className="results">
         {isLoading === "true" && <LoadingSpinner />}
         {isLoading === "loaded" &&
           pokemonExtendedInfoArray.map((pokemon) => {

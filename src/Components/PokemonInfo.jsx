@@ -1,13 +1,10 @@
 import React from "react";
+import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 
-export function PokemonInfo({ name }) {
-  const capitalizeWord = (name) => {
-    return name.charAt(0).toUpperCase() + name.slice(1);
-  };
-
+export const PokemonInfo = ({ name }) => {
   return (
     <div className="pokemoninfo-container">
-      <h1>{capitalizeWord(name)}</h1>
+      <h1>{capitalizeFirstLetter(name)}</h1>
     </div>
   );
-}
+};
