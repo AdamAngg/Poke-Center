@@ -3,6 +3,9 @@
 .pokemon-results-container {
   background-color: $bg-color-pokemontable;
   grid-area: list;
+  height: 170rem;
+  display: flex;
+  flex-direction: column;
 }
 .results {
   padding: 3rem 0;

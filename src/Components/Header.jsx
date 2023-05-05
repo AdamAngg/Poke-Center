@@ -6,13 +6,19 @@ export const Header = () => {
   const dispatch = useDispatch();
   return (
     <header className="header">
-      <img src={require("../images/logo.png")} alt="logo" />
+      <img
+        src={require("../images/logo.png")}
+        alt="logo"
+        className="header__logo"
+      />
       <input
-        className="navbar__filter"
+        className="search"
+        placeholder="Search your pokemon..."
         onChange={(evt) =>
           dispatch(addSearchPokemon(evt.target.value.toLowerCase()))
         }
       />
+      <button className="liked-pokemons">Your Pokemon's</button>
     </header>
   );
 };
