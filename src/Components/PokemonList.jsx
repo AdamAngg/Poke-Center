@@ -3,9 +3,12 @@ import { PokemnonRow } from "./PokemonRow";
 import { useDispatch, useSelector } from "react-redux";
 import { addCurrentPokemon, fetchPokemon } from "../store/pokemonSlice";
 import { fetchCurrentPokemon } from "../store/pokemonInfoSlice";
+import { LoadingSpinner } from "./Spinner";
 
 export const PokemonList = () => {
-  const pokemon = useSelector((state) => state.pokemonReducer.pokemon);
+  const pokemonExtendedInfoArray = useSelector(
+    (state) => state.pokemonInfoReducer.pokemonExtendedInfoArray
+  );
   const searchedPokemon = useSelector(
     (state) => state.pokemonReducer.searchedPokemon
   );
@@ -19,6 +22,7 @@ export const PokemonList = () => {
   useEffect(() => {
     if (isLoading === "loaded") dispatch(fetchCurrentPokemon());
   }, [isLoading, searchedPokemon]);
+
   return (
     <div className="pokemon-results-container">
       <div className="titles">
@@ -26,21 +30,17 @@ export const PokemonList = () => {
         <h3>More info:</h3>
       </div>
       <ul className="pokemon-container">
+        {isLoading === "true" && <LoadingSpinner />}
         {isLoading === "loaded" &&
-          pokemon
-            .filter((pokemon) =>
-              pokemon.name.toLowerCase().includes(searchedPokemon)
-            )
-            .slice(0, 20)
-            .map((pokemon) => {
-              return (
-                <PokemnonRow
-                  pokemonCurrent={pokemon}
-                  key={pokemon.name + 151}
-                  onSelect={(pokemon) => dispatch(addCurrentPokemon(pokemon))}
-                />
-              );
-            })}
+          pokemonExtendedInfoArray.map((pokemon) => {
+            return (
+              <PokemnonRow
+                pokemon={pokemon}
+                key={pokemon.id}
+                onSelect={(pokemon) => dispatch(addCurrentPokemon(pokemon))}
+              />
+            );
+          })}
       </ul>
     </div>
   );

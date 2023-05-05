@@ -1,23 +1,27 @@
 import React from "react";
 import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 
-export const PokemnonRow = ({ pokemonCurrent, onSelect }) => {
+export const PokemnonRow = ({ pokemon, onSelect }) => {
   return (
     <li className="pokemon">
       <figure
-        key={pokemonCurrent.name}
-        className={"pokemon-preview pokemon-preview__"}
+        key={pokemon.name}
+        className={
+          "pokemon-preview pokemon-preview__" + pokemon.types[0].type.name
+        }
       >
-        <img className="pokemon-img" alt="" />
+        <img
+          src={pokemon.sprites.front_default}
+          className="pokemon-img"
+          alt={pokemon.name + "Look from up front"}
+        />
       </figure>
-      <p className="pokemon-name">
-        {capitalizeFirstLetter(pokemonCurrent.name)}
-      </p>
+      <p className="pokemon-name">{capitalizeFirstLetter(pokemon.name)}</p>
 
       <button
         className="pokemon-btn"
         onClick={() => {
-          onSelect(pokemonCurrent);
+          onSelect(pokemon.name);
         }}
       >
         Select

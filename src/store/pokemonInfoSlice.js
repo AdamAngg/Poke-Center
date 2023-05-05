@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { returnSlicedArray } from "../helpers/returnSlicedArray.helper";
 
 const initialState = {
   pokemonExtendedInfoArray: [],
-  id: null,
   error: "",
   liked: false,
   loading: null,
@@ -13,14 +13,14 @@ export const fetchCurrentPokemon = createAsyncThunk(
   "pokemon/fetchCurrentPokemon",
   async (_, { getState }) => {
     const pokemon = await getState().pokemonReducer.pokemon;
-    const pokemonSmallerArray = pokemon
-      .filter((pokemon) =>
-        pokemon.name.includes(getState().pokemonReducer.searchedPokemon)
-      )
-      .slice(0, 20);
+    const pokemonSmallerArray = returnSlicedArray(
+      pokemon,
+      getState().pokemonReducer.searchedPokemon
+    );
     const urlsArray = pokemonSmallerArray.map((pokemon) => pokemon.url);
     const responses = await axios.all(urlsArray.map((url) => axios.get(url)));
     const results = responses.map((response) => response.data);
+    console.log(results);
     return results;
   }
 );
