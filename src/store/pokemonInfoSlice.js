@@ -45,5 +45,5 @@ export const pokemonInfoSlice = createSlice({
     });
   },
 });
-export const { addID, emptyArr } = pokemonInfoSlice.actions;
+export const { setActiveState } = pokemonInfoSlice.actions;
 export default pokemonInfoSlice.reducer;

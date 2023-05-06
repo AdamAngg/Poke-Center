@@ -20,6 +20,7 @@
 }
 .element {
   cursor: pointer;
+  transition: all 0.2s ease-in;
 
   &__container {
     display: flex;
@@ -41,7 +42,9 @@
   &__jname {
     text-transform: uppercase;
   }
-
+  &__active {
+    background-color: $bg-color-hover;
+  }
   &__preview {
     flex: 0 0 5.2rem;
     margin-right: 1.2rem;
@@ -105,6 +108,7 @@
 }
 .element:hover {
   background-color: $bg-color-hover;
+  transform: translateY(-2.5px);
 }
 .pokemon-img {
   position: absolute;
