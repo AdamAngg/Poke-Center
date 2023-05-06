@@ -7,12 +7,12 @@ import { LoadingSpinner } from "./Spinner";
 
 export const PokemonList = () => {
   const pokemonExtendedInfoArray = useSelector(
-    (state) => state.pokemonInfoReducer.pokemonExtendedInfoArray
+    (state) => state?.pokemonInfoReducer?.pokemonExtendedInfoArray
   );
   const searchedPokemon = useSelector(
-    (state) => state.pokemonReducer.searchedPokemon
+    (state) => state?.pokemonReducer?.searchedPokemon
   );
-  const isLoading = useSelector((state) => state.pokemonReducer.loading);
+  const isLoading = useSelector((state) => state?.pokemonReducer?.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {

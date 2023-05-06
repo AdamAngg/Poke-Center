@@ -11,14 +11,24 @@ export const Header = () => {
         alt="logo"
         className="header__logo"
       />
-      <input
-        className="search"
-        placeholder="Search your pokemon..."
-        onChange={(evt) =>
-          dispatch(addSearchPokemon(evt.target.value.toLowerCase()))
-        }
-      />
-      <button className="liked-pokemons">Your Pokemon's</button>
+      <div className="search">
+        <input
+          className="search__bar"
+          placeholder="Search your pokemon..."
+          onChange={(evt) =>
+            dispatch(addSearchPokemon(evt.target.value.toLowerCase()))
+          }
+        />
+        <div className="search__btn">
+          <ion-icon name="search-outline"></ion-icon>
+        </div>
+      </div>
+      <div className="liked-pokemons">
+        <div className="liked-pokemons__btn">
+          <ion-icon name="bookmark-outline"></ion-icon>
+          <span>Your Pokemon's</span>
+        </div>
+      </div>
     </header>
   );
 };
