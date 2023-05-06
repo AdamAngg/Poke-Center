@@ -50,8 +50,9 @@
   height: 100%;
   margin-right: 2.6rem;
   display: flex;
-  cursor: pointer;
+  cursor: pointer !important;
   align-self: stretch;
+  position: relative;
 
   &__btn {
     height: 100%;
@@ -78,4 +79,29 @@
   &__btn:hover {
     background-color: $bg-color-pokemontable;
   }
+  &__btn:hover + .liked {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+.liked {
+  position: absolute;
+  background-color: $bg-color-pokemontable;
+  box-shadow: 0 0.8rem 5rem 2rem rgba(97, 85, 81, 0.1);
+  width: 40rem;
+  z-index: 4;
+  right: -2.5rem;
+  padding: 1rem 0;
+  top: 10rem;
+  cursor: auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s 0.2s;
+}
+.liked:hover {
+  visibility: visible;
+  opacity: 1;
+}
+.liked-list {
+  list-style: none;
 }

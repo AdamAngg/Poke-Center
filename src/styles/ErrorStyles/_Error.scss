@@ -1,0 +1,19 @@
+@use "../globals" as *;
+.error {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 5rem 4rem;
+  display: flex;
+
+  span {
+    font-size: 1.6rem;
+    color: $txt-color-secondary;
+    font-weight: 600;
+  }
+  ion-icon {
+    color: $bg-color-secondary;
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1.2rem;
+  }
+}

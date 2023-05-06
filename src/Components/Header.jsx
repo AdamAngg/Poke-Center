@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/styles.scss";
 import { useDispatch } from "react-redux";
 import { addSearchPokemon } from "../store/pokemonSlice";
+import { Error } from "./Error";
 export const Header = () => {
   const dispatch = useDispatch();
   return (
@@ -27,6 +28,15 @@ export const Header = () => {
         <div className="liked-pokemons__btn">
           <ion-icon name="bookmark-outline"></ion-icon>
           <span>Your Pokemon's</span>
+        </div>
+
+        <div className="liked">
+          <ul className="liked-list">
+            <Error
+              ErrorMsg="Your pokemon is no where to be found..."
+              ErrorIcon="bug-outline"
+            />
+          </ul>
         </div>
       </div>
     </header>

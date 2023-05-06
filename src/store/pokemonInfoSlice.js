@@ -5,7 +5,7 @@ import { returnSlicedArray } from "../helpers/returnSlicedArray.helper";
 const initialState = {
   pokemonExtendedInfoArray: [],
   error: "",
-  liked: false,
+  pokemonLikedArray: [],
   loading: null,
 };
 
@@ -28,15 +28,7 @@ export const fetchCurrentPokemon = createAsyncThunk(
 export const pokemonInfoSlice = createSlice({
   name: "pokemon",
   initialState,
-  reducers: {
-    addID(state, action) {
-      state.id = action.payload;
-    },
-    emptyArr(state) {
-      state.pokemonColor = [];
-      state.pokemonFoto = [];
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder.addCase(fetchCurrentPokemon.pending, (state) => {
       state.loading = "true";
