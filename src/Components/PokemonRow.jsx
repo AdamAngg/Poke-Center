@@ -1,23 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
-
+import { useToggleClick } from "../hooks/useToggleClick.hook";
 export const PokemnonRow = ({ pokemon, onSelect }) => {
-  const [btnState, setBtnState] = useState(false);
-
-  const onClickHandler = () => {
-    const elementArray = document.querySelectorAll(".element");
-    elementArray.forEach((e) => e.classList.remove("element__active"));
-
-    setBtnState(!btnState);
-  };
-  let toggleClass = btnState ? "element__active" : "";
+  const [onClickHandler, active, currentElementRef, className] = useToggleClick(
+    "element",
+    "element__active"
+  );
   return (
     <li
       onClick={() => {
         onSelect(pokemon);
         onClickHandler();
       }}
-      className={"element " + toggleClass}
+      className={"element " + (active ? className : "")}
+      ref={currentElementRef}
     >
       <div className="element__container">
         <figure
