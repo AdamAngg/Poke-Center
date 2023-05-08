@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState, useEffect } from "react";
+import { useCallback, useRef, useState } from "react";
 
 export const useToggleClick = (element, className) => {
   const [active, setActive] = useState(false);

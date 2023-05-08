@@ -42,8 +42,9 @@ body {
   background-color: $bg-color-content;
   margin: 4vw auto;
   overflow: hidden;
-  grid-template-rows: 10rem minmax(100rem, auto);
+  grid-template-rows: 10rem 6rem minmax(100rem, auto);
   grid-template-areas:
     "head head"
+    "generations generations"
     "list info";
 }

@@ -7,7 +7,6 @@ const initialState = {
   error: "",
   pokemonLikedArray: [],
   loading: null,
-  idOfClickedOne: null,
 };
 
 export const fetchCurrentPokemon = createAsyncThunk(
@@ -29,11 +28,7 @@ export const fetchCurrentPokemon = createAsyncThunk(
 export const pokemonInfoSlice = createSlice({
   name: "pokemon",
   initialState,
-  reducers: {
-    addIdOfClickedOne(state, action) {
-      state.idOfClickedOne = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder.addCase(fetchCurrentPokemon.pending, (state) => {
       state.loading = "true";

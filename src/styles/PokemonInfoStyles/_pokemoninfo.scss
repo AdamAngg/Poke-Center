@@ -1,3 +1,4 @@
-.pokemoninfo-container{
-    grid-area: info;
+@use "../globals" as *;
+.pokemoninfo-container {
+  grid-area: info;
 }

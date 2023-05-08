@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "./styles/styles.scss";
-import { MainLayout } from "./components/MainLayout";
+import { MainLayout } from "./pages/MainLayout";
 import { PokemonInfo } from "./components/PokemonInfo";
 import { PokemonList } from "./components/PokemonList";
 import { Header } from "./components/Header";
+import { Generations } from "./components/Generations";
 
 export const App = () => {
   const currentlySelectedPokemon = useSelector(
@@ -14,6 +15,7 @@ export const App = () => {
   return (
     <MainLayout>
       <Header />
+      <Generations />
       <PokemonList />
       {currentlySelectedPokemon && (
         <PokemonInfo {...currentlySelectedPokemon} />
