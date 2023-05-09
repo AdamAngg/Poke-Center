@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <header className="header">
       <img
-        src={require("../images/logo.png")}
+        src={require("../assets/images/logo.png")}
         alt="logo"
         className="header__logo"
       />
