@@ -20,8 +20,11 @@
 }
 .element {
   cursor: pointer;
+  opacity: 0;
   transition: all 0.2s ease-in;
-
+  &__opacity {
+    opacity: 1;
+  }
   &__container {
     display: flex;
     align-items: center;

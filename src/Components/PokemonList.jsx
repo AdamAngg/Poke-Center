@@ -5,6 +5,7 @@ import { addCurrentPokemon } from "../store/pokemonSlice";
 import { fetchCurrentPokemon } from "../store/pokemonInfoSlice";
 import { LoadingSpinner } from "./Spinner";
 import { useFetchPokemonMainArray } from "../hooks/useFetchPokemonMainArray.hook";
+import { Error } from "./Error";
 
 export const PokemonList = () => {
   const pokemonExtendedInfoArray = useSelector(
@@ -25,7 +26,13 @@ export const PokemonList = () => {
   return (
     <div className="pokemon-results-container">
       <ul className="results">
-        {isLoading === "true" || (isLoading === "false" && <LoadingSpinner />)}
+        {isLoading === "true" && <LoadingSpinner />}
+        {isLoading === "false" && (
+          <Error
+            ErrorMsg="Something went wrong with cat your pokemons..."
+            ErrorIcon="alert-circle-outline"
+          />
+        )}
         {isLoading === "loaded" &&
           pokemonExtendedInfoArray.map((pokemon) => {
             return (
