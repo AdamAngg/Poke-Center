@@ -18,7 +18,8 @@ export const Header = () => {
       />
       <div
         className={
-          "search " + (containsSpecialChars("<>") ? "search__error" : "")
+          "search " +
+          (containsSpecialChars(searchedPokemon) ? "search__error" : "")
         }
       >
         <input
@@ -26,6 +27,12 @@ export const Header = () => {
           placeholder="Search your pokemon..."
           onChange={(evt) => {
             dispatch(addSearchPokemon(evt.target.value.toLowerCase()));
+          }}
+          onFocus={(evt) => {
+            evt.target.parentNode.classList.add("search__focus");
+          }}
+          onBlur={(evt) => {
+            evt.target.parentNode.classList.remove("search__focus");
           }}
         />
         <div className="search__btn">
