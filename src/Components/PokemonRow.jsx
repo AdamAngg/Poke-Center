@@ -3,8 +3,7 @@ import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 import { useToggleClick } from "../hooks/useToggleClick.hook";
 export const PokemnonRow = ({ pokemon, onSelect }) => {
   const [onClickHandler, active, currentElementRef, className] = useToggleClick(
-    "element",
-    "element__active"
+    { element: "element", className: "element__active" }
   );
   return (
     <li

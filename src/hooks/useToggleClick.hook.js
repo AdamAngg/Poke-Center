@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from "react";
 
-export const useToggleClick = (element, className) => {
+export const useToggleClick = ({ element, className }) => {
   const [active, setActive] = useState(false);
   const currentElementRef = useRef(null);
 

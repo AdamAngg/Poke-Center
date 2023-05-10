@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { PokemnonRow } from "./PokemonRow";
 import { useDispatch, useSelector } from "react-redux";
-import { addCurrentPokemon, fetchPokemon } from "../store/pokemonSlice";
+import { addCurrentPokemon } from "../store/pokemonSlice";
 import { fetchCurrentPokemon } from "../store/pokemonInfoSlice";
 import { LoadingSpinner } from "./Spinner";
+import { useFetchPokemonMainArray } from "../hooks/useFetchPokemonMainArray.hook";
 
 export const PokemonList = () => {
   const pokemonExtendedInfoArray = useSelector(
@@ -15,9 +16,7 @@ export const PokemonList = () => {
   const isLoading = useSelector((state) => state?.pokemonReducer?.loading);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchPokemon());
-  }, []);
+  useFetchPokemonMainArray();
 
   useEffect(() => {
     if (isLoading === "loaded") dispatch(fetchCurrentPokemon());

@@ -11,10 +11,8 @@ const initialState = {
 
 export const fetchPokemon = createAsyncThunk(
   "pokemon/fetchPokemon",
-  async () => {
-    return await axios
-      .get("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0")
-      .then((response) => response.data.results);
+  async (url = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0") => {
+    return await axios.get(url).then((response) => response.data.results);
   }
 );
 
