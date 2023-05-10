@@ -29,7 +29,7 @@ export const PokemonList = () => {
         {isLoading === "true" && <LoadingSpinner />}
         {isLoading === "false" && (
           <Error
-            ErrorMsg="Something went wrong with cat your pokemons..."
+            ErrorMsg="Something went wrong with catching your pokemons..."
             ErrorIcon="alert-circle-outline"
           />
         )}

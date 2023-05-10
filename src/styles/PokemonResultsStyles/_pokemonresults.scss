@@ -20,10 +20,10 @@
 }
 .element {
   cursor: pointer;
-  opacity: 0;
+  opacity: 1;
   transition: all 0.2s ease-in;
   &__opacity {
-    opacity: 1;
+    opacity: 0;
   }
   &__container {
     display: flex;

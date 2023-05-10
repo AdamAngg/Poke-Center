@@ -1,14 +1,13 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 
 export const useToggleClick = ({ element, className }) => {
-  const [active, setActive] = useState(false);
   const currentElementRef = useRef(null);
 
   const onClickHandler = useCallback(() => {
     if (currentElementRef.current) {
       currentElementRef.current.classList.add(className);
     }
-    setActive(true);
+
     const elementArray = document.querySelectorAll("." + element);
     elementArray.forEach((e) => {
       if (e !== currentElementRef.current) {
@@ -17,5 +16,5 @@ export const useToggleClick = ({ element, className }) => {
     });
   }, []);
 
-  return [onClickHandler, active, currentElementRef, className];
+  return [onClickHandler, currentElementRef];
 };

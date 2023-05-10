@@ -1,10 +1,14 @@
 import React from "react";
 import "../styles/styles.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addSearchPokemon } from "../store/pokemonSlice";
 import { Error } from "./Error";
+import { containsSpecialChars } from "../helpers/containsSpecialChars.helper";
 export const Header = () => {
   const dispatch = useDispatch();
+  const searchedPokemon = useSelector(
+    (state) => state?.pokemonReducer?.searchedPokemon
+  );
   return (
     <header className="header">
       <img
@@ -12,13 +16,17 @@ export const Header = () => {
         alt="logo"
         className="header__logo"
       />
-      <div className="search">
+      <div
+        className={
+          "search " + (containsSpecialChars("<>") ? "search__error" : "")
+        }
+      >
         <input
-          className="search__bar"
+          className="search__bar "
           placeholder="Search your pokemon..."
-          onChange={(evt) =>
-            dispatch(addSearchPokemon(evt.target.value.toLowerCase()))
-          }
+          onChange={(evt) => {
+            dispatch(addSearchPokemon(evt.target.value.toLowerCase()));
+          }}
         />
         <div className="search__btn">
           <ion-icon name="search-outline"></ion-icon>

@@ -18,9 +18,16 @@
   padding-left: 4.6rem;
   align-items: center;
 
+  &__error {
+    background-image: linear-gradient(
+      to right bottom,
+      $bg-color,
+      $bg-color-secondary
+    );
+  }
   &__bar {
-    height: 100%;
     cursor: text;
+    height: 100%;
     border: none;
     font-family: inherit;
     font-size: 1.8rem;
