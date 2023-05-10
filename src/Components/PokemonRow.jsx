@@ -3,10 +3,12 @@ import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 import { useToggleClick } from "../hooks/useToggleClick.hook";
 import { useChangeOpacity } from "../hooks/useChangeOpacity.hook";
 export const PokemnonRow = ({ pokemon, onSelect }) => {
-  const [onClickHandler, currentElementRef] = useToggleClick({
-    element: "element",
-    className: "element__active",
-  });
+  const [onClickHandler, active, currentElementRef, className] = useToggleClick(
+    {
+      element: "element",
+      className: "element__active",
+    }
+  );
   useChangeOpacity();
   return (
     <li

@@ -37,6 +37,10 @@
   input::placeholder {
     color: $txt-place-holder;
   }
+
+  .search:has(input:focus-visible) {
+    transform: translateY(-6.5px);
+  }
   &__btn {
     padding: 1.5rem 4rem;
     border-radius: 10rem;
