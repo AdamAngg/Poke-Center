@@ -25,7 +25,7 @@ export const PokemonList = () => {
   return (
     <div className="pokemon-results-container">
       <ul className="results">
-        {isLoading === "true" && <LoadingSpinner />}
+        {isLoading === "true" || (isLoading === "false" && <LoadingSpinner />)}
         {isLoading === "loaded" &&
           pokemonExtendedInfoArray.map((pokemon) => {
             return (
