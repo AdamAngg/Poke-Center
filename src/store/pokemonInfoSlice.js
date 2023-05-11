@@ -35,6 +35,7 @@ export const pokemonInfoSlice = createSlice({
     });
     builder.addCase(fetchCurrentPokemon.fulfilled, (state, action) => {
       state.loading = "loaded";
+
       state.pokemonExtendedInfoArray = action.payload;
       state.error = "";
     });

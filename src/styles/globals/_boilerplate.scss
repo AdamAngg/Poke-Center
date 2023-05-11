@@ -26,6 +26,12 @@ body {
   position: relative;
   color: $txt-color;
 }
+img,
+video,
+svg {
+  max-width: 100%;
+  display: block;
+}
 .title {
   text-align: center;
 }

@@ -1,1 +1,34 @@
 @use "../globals" as *;
+.slider {
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+
+  padding: 2rem;
+  &__image {
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100%;
+    opacity: 0;
+    transition: background-Image 1s ease-in-out;
+  }
+  &__image::selection {
+    color: rgb(0, 0, 0);
+  }
+  ion-icon {
+    height: 5rem;
+    width: 5rem;
+    cursor: pointer;
+  }
+  &__btn__left {
+    position: absolute;
+    top: 50%;
+  }
+  &__btn__right {
+    position: absolute;
+    top: 50%;
+    right: 0;
+  }
+}

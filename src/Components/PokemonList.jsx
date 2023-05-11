@@ -14,26 +14,31 @@ export const PokemonList = () => {
   const searchedPokemon = useSelector(
     (state) => state?.pokemonReducer?.searchedPokemon
   );
-  const isLoading = useSelector((state) => state?.pokemonReducer?.loading);
+  const isLoadingMainArray = useSelector(
+    (state) => state?.pokemonReducer?.loading
+  );
+  const isLoadingExtendedArray = useSelector(
+    (state) => state?.pokemonInfoReducer?.loading
+  );
   const dispatch = useDispatch();
 
   useFetchPokemonMainArray();
 
   useEffect(() => {
-    if (isLoading === "loaded") dispatch(fetchCurrentPokemon());
-  }, [isLoading, searchedPokemon]);
+    if (isLoadingMainArray === "loaded") dispatch(fetchCurrentPokemon());
+  }, [isLoadingMainArray, searchedPokemon]);
 
   return (
     <div className="pokemon-results-container">
       <ul className="results">
-        {isLoading === "true" && <LoadingSpinner />}
-        {isLoading === "false" && (
+        {isLoadingExtendedArray === "true" && <LoadingSpinner />}
+        {isLoadingExtendedArray === "false" && (
           <Error
             ErrorMsg="Something went wrong with catching your pokemons..."
             ErrorIcon="alert-circle-outline"
           />
         )}
-        {isLoading === "loaded" &&
+        {isLoadingExtendedArray === "loaded" &&
           pokemonExtendedInfoArray.map((pokemon) => {
             return (
               <PokemnonRow
