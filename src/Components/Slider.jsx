@@ -1,7 +1,22 @@
 import { useEffect, useState } from "react";
-import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 
-export const Slider = ({ images, name, type }) => {
+import { styled, css } from "styled-components";
+
+const StyledSliderImage = styled.div`
+  opacity: ${({ loading }) => loading};
+  background-image: ${({ imageurl }) => `url(${imageurl})`};
+  &::before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    height: 100rem;
+    width: 100rem;
+    bottom: 60%;
+    background-color: ${(props) => `var(--${props.color})`};
+  }
+`;
+
+export const Slider = ({ images, type }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = Object.keys(images);
   const [loading, setLoading] = useState(true);
@@ -39,13 +54,12 @@ export const Slider = ({ images, name, type }) => {
         alt=""
         style={{ display: "none" }}
       />
-      <div
+      <StyledSliderImage
         className="slider__image"
         alt=""
-        style={{
-          opacity: loading ? 0 : 1,
-          backgroundImage: `url(${images[slides[currentSlide]]})`,
-        }}
+        loading={loading ? 0 : 1}
+        imageurl={images[slides[currentSlide]]}
+        color={type}
       >
         <div className="slider__btn__left ">
           <ion-icon
@@ -70,12 +84,7 @@ export const Slider = ({ images, name, type }) => {
             );
           })}
         </div>
-        <h3 className="slider__title">
-          <span className={"element__preview__" + type}>
-            {capitalizeFirstLetter(name)}
-          </span>
-        </h3>
-      </div>
+      </StyledSliderImage>
     </figure>
   );
 };
