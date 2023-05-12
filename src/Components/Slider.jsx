@@ -5,13 +5,17 @@ import { styled, css } from "styled-components";
 const StyledSliderImage = styled.div`
   opacity: ${({ loading }) => loading};
   background-image: ${({ imageurl }) => `url(${imageurl})`};
+
   &::before {
+    z-index: -1;
     content: "";
     position: absolute;
     border-radius: 50%;
-    height: 100rem;
-    width: 100rem;
-    bottom: 60%;
+    height: 85rem;
+    width: 85rem;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: ${(props) => `var(--${props.color})`};
   }
 `;
@@ -73,18 +77,18 @@ export const Slider = ({ images, type }) => {
             onClick={goToNextSlide}
           ></ion-icon>
         </div>
-        <div className="slider__dot">
-          {slides.map((e, i) => {
-            return (
-              <button
-                key={i}
-                onClick={(evt) => onClickHandler(evt.target.dataset, i)}
-                data-active={i === currentSlide ? "true" : "false"}
-              ></button>
-            );
-          })}
-        </div>
       </StyledSliderImage>
+      <div className="slider__dot">
+        {slides.map((e, i) => {
+          return (
+            <button
+              key={i}
+              onClick={(evt) => onClickHandler(evt.target.dataset, i)}
+              data-active={i === currentSlide ? "true" : "false"}
+            ></button>
+          );
+        })}
+      </div>
     </figure>
   );
 };

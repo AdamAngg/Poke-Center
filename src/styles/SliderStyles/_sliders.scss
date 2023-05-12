@@ -1,10 +1,10 @@
 @use "../globals" as *;
 .slider {
+  z-index: 1;
   height: 40rem;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 2rem;
   position: relative;
 
   &__image {
@@ -28,11 +28,13 @@
   &__btn__left {
     position: absolute;
     top: 50%;
+    z-index: 1;
   }
   &__btn__right {
     position: absolute;
     top: 50%;
     right: 0;
+    z-index: 1;
   }
   &__titles {
     display: flex;
@@ -42,9 +44,7 @@
   &__dot {
     display: flex;
     gap: 1rem;
-    position: absolute;
-    top: 100%;
-    left: 47%;
+    justify-content: center;
     button {
       width: 2rem;
       height: 2rem;
