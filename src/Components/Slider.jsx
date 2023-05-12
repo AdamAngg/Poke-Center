@@ -71,7 +71,9 @@ export const Slider = ({ images, name, type }) => {
           })}
         </div>
         <h3 className="slider__title">
-          <span>{capitalizeFirstLetter(name)}</span>
+          <span className={"element__preview__" + type}>
+            {capitalizeFirstLetter(name)}
+          </span>
         </h3>
       </div>
     </figure>

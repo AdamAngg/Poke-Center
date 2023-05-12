@@ -40,6 +40,8 @@
     color: $bg-color-pokemontable;
     font-weight: 600;
     span {
+      padding: 0.6rem 2rem 0.6rem 2rem;
+      user-select: none;
     }
   }
   &__dot {
