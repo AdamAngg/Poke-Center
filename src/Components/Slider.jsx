@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { LoadingSpinner } from "./Spinner";
+import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 
-export const Slider = ({ images }) => {
+export const Slider = ({ images, name, type }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = Object.keys(images);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setCurrentSlide(0);
-    setLoading(true);
+    setLoading(false);
   }, [images]);
 
   const goToNextSlide = () => {
@@ -26,13 +26,19 @@ export const Slider = ({ images }) => {
       setCurrentSlide(currentSlide - 1);
     }
   };
-  useEffect(() => {
-    setLoading(false);
-  }, []);
+  const onClickHandler = (evt, i) => {
+    if (evt.active === "false") {
+      setCurrentSlide(i);
+    }
+  };
+
   return (
     <figure className="slider">
-      {loading && <LoadingSpinner />}
-
+      <img
+        src={images[slides[currentSlide + 1]]}
+        alt=""
+        style={{ display: "none" }}
+      />
       <div
         className="slider__image"
         alt=""
@@ -53,12 +59,21 @@ export const Slider = ({ images }) => {
             onClick={goToNextSlide}
           ></ion-icon>
         </div>
+        <div className="slider__dot">
+          {slides.map((e, i) => {
+            return (
+              <button
+                key={i}
+                onClick={(evt) => onClickHandler(evt.target.dataset, i)}
+                data-active={i === currentSlide ? "true" : "false"}
+              ></button>
+            );
+          })}
+        </div>
+        <h3 className="slider__title">
+          <span>{capitalizeFirstLetter(name)}</span>
+        </h3>
       </div>
-
-      {slides.map((e) => {
-        return;
-      })}
-      <h1 className="Slider__title"></h1>
     </figure>
   );
 };

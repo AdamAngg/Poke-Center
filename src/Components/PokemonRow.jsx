@@ -26,7 +26,7 @@ export const PokemnonRow = ({ pokemon, onSelect }) => {
           }
         >
           <img
-            src={pokemon.sprites.front_default}
+            src={pokemon?.sprites?.front_default}
             className="pokemon-img"
             alt={pokemon?.name + "from up front"}
           />

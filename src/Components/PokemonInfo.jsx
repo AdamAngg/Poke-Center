@@ -1,12 +1,15 @@
 import React from "react";
-import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 import { Slider } from "./Slider";
 
-export const PokemonInfo = ({ name, sprites }) => {
+export const PokemonInfo = ({ name, sprites, id, types }) => {
   return (
     <div className="pokemoninfo-container">
-      <h1>{capitalizeFirstLetter(name)}</h1>
-      <Slider images={sprites.other["official-artwork"]} />
+      <Slider
+        images={sprites.other["official-artwork"]}
+        name={name}
+        key={id}
+        type={types[0]?.type?.name}
+      />
     </div>
   );
 };
