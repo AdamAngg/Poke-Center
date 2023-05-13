@@ -1,10 +1,11 @@
 @use "../globals" as *;
 .slider {
-  z-index: 1;
+  top: 5rem;
+  margin: 4rem 0 4rem;
   height: 40rem;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  z-index: 2;
   position: relative;
 
   &__image {
@@ -14,7 +15,7 @@
     background-position: center center;
     height: 100%;
     opacity: 0;
-    overflow: hidden;
+    z-index: 1;
     transition: background-Image 0.5s ease-in-out, opacity 1s;
   }
   &__image::selection {
@@ -28,13 +29,11 @@
   &__btn__left {
     position: absolute;
     top: 50%;
-    z-index: 1;
   }
   &__btn__right {
     position: absolute;
     top: 50%;
     right: 0;
-    z-index: 1;
   }
   &__titles {
     display: flex;

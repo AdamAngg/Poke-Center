@@ -41,7 +41,11 @@ export const Header = () => {
       </div>
       <div className="liked-pokemons">
         <div className="liked-pokemons__btn">
-          <ion-icon name="bookmark-outline"></ion-icon>
+          <img
+            src={require("../assets/images/pokeball.png")}
+            alt="logo"
+            className="header__logo"
+          />
           <span>Your Pokemon's</span>
         </div>
 

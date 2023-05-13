@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { styled, css } from "styled-components";
-
-const StyledSliderImage = styled.div`
-  opacity: ${({ loading }) => loading};
-  background-image: ${({ imageurl }) => `url(${imageurl})`};
-
+import { styled } from "styled-components";
+const StyledFigure = styled.figure`
   &::before {
     z-index: -1;
     content: "";
@@ -15,9 +11,16 @@ const StyledSliderImage = styled.div`
     width: 85rem;
     bottom: 30%;
     left: 50%;
+    opacity: ${({ loading }) => loading};
     transform: translateX(-50%);
     background-color: ${(props) => `var(--${props.color})`};
+    transition: opacity 0.2s ease-in-out;
   }
+`;
+
+const StyledSliderImage = styled.div`
+  opacity: ${({ loading }) => loading};
+  background-image: ${({ imageurl }) => `url(${imageurl})`};
 `;
 
 export const Slider = ({ images, type }) => {
@@ -52,7 +55,7 @@ export const Slider = ({ images, type }) => {
   };
 
   return (
-    <figure className="slider">
+    <StyledFigure className="slider" color={type} loading={loading ? 0 : 1}>
       <img
         src={images[slides[currentSlide + 1]]}
         alt=""
@@ -63,7 +66,6 @@ export const Slider = ({ images, type }) => {
         alt=""
         loading={loading ? 0 : 1}
         imageurl={images[slides[currentSlide]]}
-        color={type}
       >
         <div className="slider__btn__left ">
           <ion-icon
@@ -89,6 +91,6 @@ export const Slider = ({ images, type }) => {
           );
         })}
       </div>
-    </figure>
+    </StyledFigure>
   );
 };
