@@ -23,7 +23,7 @@ const StyledSliderImage = styled.div`
   background-image: ${({ imageurl }) => `url(${imageurl})`};
 `;
 
-export const Slider = ({ images, type }) => {
+export const Slider = ({ images, type, id, stats }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = Object.keys(images);
   const [loading, setLoading] = useState(true);
@@ -91,6 +91,14 @@ export const Slider = ({ images, type }) => {
           );
         })}
       </div>
+      <button className="slider__btn__info slider__btn__info__left">
+        <span>No. </span>
+        <span>{id}</span>
+      </button>
+      <button className="slider__btn__info slider__btn__info__right">
+        <span>HP </span>
+        <span>{stats[0]?.base_stat}</span>
+      </button>
     </StyledFigure>
   );
 };

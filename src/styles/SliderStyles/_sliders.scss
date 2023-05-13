@@ -7,6 +7,38 @@
   flex-direction: column;
   z-index: 2;
   position: relative;
+  &__btn__info {
+    display: flex;
+    border: none;
+    border-radius: 5rem;
+    width: 6%;
+    font: inherit;
+    color: $txt-color-secondary;
+    font-weight: 600;
+    padding: 1.2rem 4.6rem;
+    justify-content: center;
+    font-size: $h4-size;
+    background: $bg-color-pokemontable;
+    white-space: nowrap;
+    gap: 0.6rem;
+    span:first-child {
+      font-size: $h4-size;
+      align-self: center;
+    }
+    span:last-child {
+      align-self: flex-end;
+    }
+    &__left {
+      position: absolute;
+      top: -15%;
+      left: 6%;
+    }
+    &__right {
+      position: absolute;
+      top: -15%;
+      right: 6%;
+    }
+  }
 
   &__image {
     position: relative;
