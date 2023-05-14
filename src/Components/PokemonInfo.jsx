@@ -8,7 +8,7 @@ export const PokemonInfo = ({ name, sprites, id, types, stats }) => {
       <Slider
         images={sprites.other["official-artwork"]}
         key={id}
-        type={types[0]?.type?.name}
+        types={types}
         id={id}
         stats={stats}
       />

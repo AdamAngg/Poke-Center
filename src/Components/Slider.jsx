@@ -13,7 +13,13 @@ const StyledFigure = styled.figure`
     left: 50%;
     opacity: ${({ loading }) => loading};
     transform: translateX(-50%);
-    background-color: ${(props) => `var(--${props.color})`};
+
+    background-image: linear-gradient(
+      to right bottom,
+      ${(props) => `var(--${props.color})`} 50%,
+      ${(props) => `var(--${props.color2})`}
+    );
+
     transition: opacity 0.2s ease-in-out;
   }
 `;
@@ -23,7 +29,7 @@ const StyledSliderImage = styled.div`
   background-image: ${({ imageurl }) => `url(${imageurl})`};
 `;
 
-export const Slider = ({ images, type, id, stats }) => {
+export const Slider = ({ images, types, id, stats }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = Object.keys(images);
   const [loading, setLoading] = useState(true);
@@ -55,7 +61,14 @@ export const Slider = ({ images, type, id, stats }) => {
   };
 
   return (
-    <StyledFigure className="slider" color={type} loading={loading ? 0 : 1}>
+    <StyledFigure
+      className="slider"
+      color={types[0]?.type?.name}
+      color2={
+        types[1]?.type?.name ? types[1]?.type?.name : types[0]?.type?.name
+      }
+      loading={loading ? 0 : 1}
+    >
       <img
         src={images[slides[currentSlide + 1]]}
         alt=""
