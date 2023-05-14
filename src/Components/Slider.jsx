@@ -106,13 +106,17 @@ export const Slider = ({ images, types, id, stats }) => {
       </div>
 
       <button className="slider__btn__stats slider__btn__stats__left">
-        <span>No. </span>
-        <span>{id}</span>
+        <div className="hehe">
+          <span>No. </span>
+          <span>{id}</span>
+        </div>
       </button>
 
       <button className="slider__btn__stats slider__btn__stats__right">
-        <span>HP </span>
-        <span>{stats[0]?.base_stat}</span>
+        <div className="slider__btn__stats__container">
+          <span>HP </span>
+          <span>{stats[0]?.base_stat}</span>
+        </div>
       </button>
     </StyledFigure>
   );

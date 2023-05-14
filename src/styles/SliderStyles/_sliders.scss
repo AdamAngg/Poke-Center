@@ -7,10 +7,9 @@
   flex-direction: column;
   z-index: 2;
   position: relative;
-
   &__btn__stats {
-    display: flex;
     border: none;
+    display: flex;
     border-radius: 5rem;
     width: 6%;
     font: inherit;
@@ -21,14 +20,16 @@
     font-size: $h4-size;
     background: $bg-color-pokemontable;
     white-space: nowrap;
-    gap: 0.6rem;
+    gap: 2px;
+    align-items: center;
+    &__container {
+      display: inline;
+    }
+
     span:first-child {
-      font-size: $h4-size;
-      align-self: center;
+      font-size: $p-size;
     }
-    span:last-child {
-      align-self: flex-end;
-    }
+
     &__left {
       position: absolute;
       top: -15%;
