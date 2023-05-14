@@ -80,13 +80,13 @@ export const Slider = ({ images, types, id, stats }) => {
         loading={loading ? 0 : 1}
         imageurl={images[slides[currentSlide]]}
       >
-        <div className="slider__btn__left ">
+        <div className="slider__arrow__left ">
           <ion-icon
             name="chevron-back-outline"
             onClick={goToPreviousSlide}
           ></ion-icon>
         </div>
-        <div className="slider__btn__right">
+        <div className="slider__arrow__right">
           <ion-icon
             name="chevron-forward-outline"
             onClick={goToNextSlide}
@@ -104,11 +104,13 @@ export const Slider = ({ images, types, id, stats }) => {
           );
         })}
       </div>
-      <button className="slider__btn__info slider__btn__info__left">
+
+      <button className="slider__btn__stats slider__btn__stats__left">
         <span>No. </span>
         <span>{id}</span>
       </button>
-      <button className="slider__btn__info slider__btn__info__right">
+
+      <button className="slider__btn__stats slider__btn__stats__right">
         <span>HP </span>
         <span>{stats[0]?.base_stat}</span>
       </button>

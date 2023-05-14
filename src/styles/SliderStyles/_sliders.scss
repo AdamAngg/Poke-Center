@@ -7,7 +7,8 @@
   flex-direction: column;
   z-index: 2;
   position: relative;
-  &__btn__info {
+
+  &__btn__stats {
     display: flex;
     border: none;
     border-radius: 5rem;
@@ -58,11 +59,11 @@
     width: 5rem;
     cursor: pointer;
   }
-  &__btn__left {
+  &__arrow__left {
     position: absolute;
     top: 50%;
   }
-  &__btn__right {
+  &__arrow__right {
     position: absolute;
     top: 50%;
     right: 0;
