@@ -94,12 +94,12 @@ export const Slider = ({ images, types, id, stats }) => {
         </div>
       </StyledSliderImage>
       <div className="slider__dot">
-        {slides.map((e, i) => {
+        {slides.map((e, index) => {
           return (
             <button
-              key={i}
-              onClick={(evt) => onClickHandler(evt.target.dataset, i)}
-              data-active={i === currentSlide ? "true" : "false"}
+              key={index}
+              onClick={(evt) => onClickHandler(evt.target.dataset, index)}
+              data-active={index === currentSlide ? "true" : "false"}
             ></button>
           );
         })}

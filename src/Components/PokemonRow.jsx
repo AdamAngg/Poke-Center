@@ -2,7 +2,7 @@ import React from "react";
 import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 import { useToggleClick } from "../hooks/useToggleClick.hook";
 import { useChangeOpacity } from "../hooks/useChangeOpacity.hook";
-export const PokemnonRow = ({ pokemon, onSelect }) => {
+export const PokemnonRow = ({ pokemon, onSelect, japanName }) => {
   const [onClickHandler, currentElementRef] = useToggleClick({
     element: "element",
     className: "element__active",
@@ -35,7 +35,7 @@ export const PokemnonRow = ({ pokemon, onSelect }) => {
           <h4 className="element__name">
             {capitalizeFirstLetter(pokemon?.name)}
           </h4>
-          <p className="element__jname">Name</p>
+          <p className="element__jname">{japanName}</p>
         </div>
       </div>
     </li>

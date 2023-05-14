@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { PokemnonRow } from "./PokemonRow";
 import { useDispatch, useSelector } from "react-redux";
 import { addCurrentPokemon } from "../store/pokemonSlice";
-import { fetchCurrentPokemon } from "../store/pokemonInfoSlice";
+import { fetchCurrentPokemon, fetchSpecies } from "../store/pokemonInfoSlice";
 import { LoadingSpinner } from "./Spinner";
 import { useFetchPokemonMainArray } from "../hooks/useFetchPokemonMainArray.hook";
 import { Error } from "./Error";
@@ -10,6 +10,9 @@ import { Error } from "./Error";
 export const PokemonList = () => {
   const pokemonExtendedInfoArray = useSelector(
     (state) => state?.pokemonInfoReducer?.pokemonExtendedInfoArray
+  );
+  const pokemonSpeciesArray = useSelector(
+    (state) => state?.pokemonInfoReducer?.pokemonSpeciesArray
   );
   const searchedPokemon = useSelector(
     (state) => state?.pokemonReducer?.searchedPokemon
@@ -25,7 +28,8 @@ export const PokemonList = () => {
   useFetchPokemonMainArray();
 
   useEffect(() => {
-    if (isLoadingMainArray === "loaded") dispatch(fetchCurrentPokemon());
+    if (isLoadingMainArray === "loaded")
+      dispatch(fetchCurrentPokemon(), dispatch(fetchSpecies()));
   }, [isLoadingMainArray, searchedPokemon]);
 
   return (
@@ -39,12 +43,15 @@ export const PokemonList = () => {
           />
         )}
         {isLoadingExtendedArray === "loaded" &&
-          pokemonExtendedInfoArray.map((pokemon) => {
+          pokemonExtendedInfoArray.map((pokemon, index) => {
             return (
               <PokemnonRow
                 pokemon={pokemon}
+                japanName={pokemonSpeciesArray[index]?.names[0]?.name}
                 key={pokemon.id}
-                onSelect={(pokemon) => dispatch(addCurrentPokemon(pokemon))}
+                onSelect={(pokemon) => {
+                  dispatch(addCurrentPokemon(pokemon));
+                }}
               />
             );
           })}
