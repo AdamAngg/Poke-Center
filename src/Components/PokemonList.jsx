@@ -7,6 +7,7 @@ import { LoadingSpinner } from "./Spinner";
 import { useFetchPokemonMainArray } from "../hooks/useFetchPokemonMainArray.hook";
 import { Error } from "./Error";
 import { containsSpecialChars } from "../helpers/containsSpecialChars.helper";
+import { UseFetchPokemonExtendedArray } from "../hooks/useFetchPokemonExtendedArray.hook";
 
 export const PokemonList = () => {
   const pokemonExtendedInfoArray = useSelector(
@@ -18,9 +19,7 @@ export const PokemonList = () => {
   const searchedPokemon = useSelector(
     (state) => state?.pokemonReducer?.searchedPokemon
   );
-  const isLoadingMainArray = useSelector(
-    (state) => state?.pokemonReducer?.loading
-  );
+
   const isLoadingExtendedArray = useSelector(
     (state) => state?.pokemonInfoReducer?.loading
   );
@@ -28,10 +27,7 @@ export const PokemonList = () => {
 
   useFetchPokemonMainArray();
 
-  useEffect(() => {
-    if (isLoadingMainArray === "loaded")
-      dispatch(fetchCurrentPokemon(), dispatch(fetchSpecies()));
-  }, [isLoadingMainArray, searchedPokemon]);
+  UseFetchPokemonExtendedArray();
 
   return (
     <div
@@ -52,7 +48,7 @@ export const PokemonList = () => {
         )}
         {containsSpecialChars(searchedPokemon) ? (
           <Error
-            ErrorMsg="You trying too special type of typing :("
+            ErrorMsg="You trying to trick me? Aren't you? :( "
             ErrorIcon="warning-outline"
           />
         ) : (
