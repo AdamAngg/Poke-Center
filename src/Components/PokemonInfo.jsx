@@ -41,13 +41,16 @@ export const PokemonInfo = ({
           </StyledButton>
         ))}
       </div>
-      <div className="base-stats">
+      <div className="stats-container">
         {stats.slice(1).map((stats) => (
           <div className="stat">
             <span>{stats.base_stat}</span>
             <span>{capitalizeFirstLetter(stats.stat.name)}</span>
           </div>
         ))}
+      </div>
+      <div class="pokeball">
+        <div className="pokeball__button"></div>
       </div>
     </div>
   );
