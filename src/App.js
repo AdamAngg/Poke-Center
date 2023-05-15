@@ -6,6 +6,7 @@ import { PokemonInfo } from "./components/PokemonInfo";
 import { PokemonList } from "./components/PokemonList";
 import { Header } from "./components/Header";
 import { Generations } from "./components/Generations";
+import { Error } from "./components/Error";
 
 export const App = () => {
   const currentlySelectedPokemon = useSelector(
@@ -20,6 +21,14 @@ export const App = () => {
       <Header />
       <Generations />
       <PokemonList />
+      {!currentlySelectedPokemon ? (
+        <Error
+          ErrorMsg="Try and search more information about your pokemon!"
+          ErrorIcon="happy-outline"
+        />
+      ) : (
+        ""
+      )}
       {currentlySelectedPokemon && (
         <PokemonInfo
           {...currentlySelectedPokemon}
