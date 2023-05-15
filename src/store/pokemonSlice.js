@@ -4,7 +4,8 @@ import axios from "axios";
 const initialState = {
   pokemon: [],
   loading: null,
-  error: "",
+  Error: "",
+
   currentlySelectedPokemon: null,
   searchedPokemon: "",
 };
@@ -34,12 +35,12 @@ export const pokemonSlice = createSlice({
     builder.addCase(fetchPokemon.fulfilled, (state, action) => {
       state.loading = "loaded";
       state.pokemon = action.payload;
-      state.error = "";
+      state.Error = "";
     });
     builder.addCase(fetchPokemon.rejected, (state, action) => {
       state.loading = "false";
       state.pokemon = [];
-      state.error = action.error.message;
+      state.Error = action.error.message;
     });
   },
 });

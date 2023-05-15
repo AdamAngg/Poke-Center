@@ -5,11 +5,17 @@
   grid-area: list;
   display: flex;
   flex-direction: column;
+
+  &__error {
+    border: 2px solid;
+    max-height: 20rem !important;
+  }
 }
 .results {
   padding: 3rem 0;
   list-style: none;
   margin-bottom: 2rem;
+
   p {
     font-size: $p-size;
     color: $txt-color-secondary;
