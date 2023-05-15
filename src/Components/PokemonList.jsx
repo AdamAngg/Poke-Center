@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { PokemnonRow } from "./PokemonRow";
 import { useDispatch, useSelector } from "react-redux";
-import { addCurrentPokemon } from "../store/pokemonSlice";
-import { fetchCurrentPokemon, fetchSpecies } from "../store/pokemonInfoSlice";
+import {
+  addCurrentPokemon,
+  addCurrentPokemonExtendedInfo,
+} from "../store/pokemonSlice";
 import { LoadingSpinner } from "./Spinner";
 import { useFetchPokemonMainArray } from "../hooks/useFetchPokemonMainArray.hook";
 import { Error } from "./Error";
@@ -42,12 +44,14 @@ export const PokemonList = () => {
         {isLoadingExtendedArray === "true" && <LoadingSpinner />}
         {isLoadingExtendedArray === "false" && (
           <Error
+            key={1}
             ErrorMsg="Something went wrong with catching your pokemons..."
             ErrorIcon="alert-circle-outline"
           />
         )}
         {containsSpecialChars(searchedPokemon) ? (
           <Error
+            key={2}
             ErrorMsg="You trying to trick me? Aren't you? :( "
             ErrorIcon="warning-outline"
           />
@@ -62,7 +66,12 @@ export const PokemonList = () => {
                 japanName={pokemonSpeciesArray[index]?.names[0]?.name}
                 key={pokemon.id}
                 onSelect={(pokemon) => {
-                  dispatch(addCurrentPokemon(pokemon));
+                  dispatch(
+                    addCurrentPokemon(pokemon),
+                    dispatch(
+                      addCurrentPokemonExtendedInfo(pokemonSpeciesArray[index])
+                    )
+                  );
                 }}
               />
             );

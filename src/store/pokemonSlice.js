@@ -5,8 +5,8 @@ const initialState = {
   pokemon: [],
   loading: null,
   Error: "",
-
   currentlySelectedPokemon: null,
+  currentlySelectedPokemonExtendedInfo: null,
   searchedPokemon: "",
 };
 
@@ -27,6 +27,9 @@ export const pokemonSlice = createSlice({
     addSearchPokemon: (state, action) => {
       state.searchedPokemon = action.payload;
     },
+    addCurrentPokemonExtendedInfo: (state, action) => {
+      state.currentlySelectedPokemonExtendedInfo = action.payload;
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchPokemon.pending, (state) => {
@@ -44,5 +47,9 @@ export const pokemonSlice = createSlice({
     });
   },
 });
-export const { addCurrentPokemon, addSearchPokemon } = pokemonSlice.actions;
+export const {
+  addCurrentPokemon,
+  addSearchPokemon,
+  addCurrentPokemonExtendedInfo,
+} = pokemonSlice.actions;
 export default pokemonSlice.reducer;

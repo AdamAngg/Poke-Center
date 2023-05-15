@@ -43,7 +43,7 @@ svg {
   @extend %grid;
   max-width: 120rem;
   min-height: 117rem;
-  box-shadow: 0 2rem 6rem 0.5rem rgb(97 85 81 / 20%);
+  box-shadow: 0 2rem 6rem 0.5rem rgba(14, 12, 12, 0.375);
   border-radius: 1rem;
   background-color: $bg-color-content;
   margin: 4vw auto;

@@ -19,7 +19,6 @@ export const PokemnonRow = ({ pokemon, onSelect, japanName }) => {
     >
       <div className="element__container">
         <figure
-          key={pokemon?.name}
           className={
             "element__preview element__preview__" +
             pokemon?.types[0]?.type?.name

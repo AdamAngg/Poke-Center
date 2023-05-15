@@ -12,8 +12,8 @@ export const App = () => {
   const currentlySelectedPokemon = useSelector(
     (state) => state.pokemonReducer.currentlySelectedPokemon
   );
-  const pokemonSpeciesArray = useSelector(
-    (state) => state.pokemonInfoReducer.pokemonSpeciesArray
+  const currentlySelectedPokemonExtendedInfo = useSelector(
+    (state) => state.pokemonReducer.currentlySelectedPokemonExtendedInfo
   );
 
   return (
@@ -31,8 +31,9 @@ export const App = () => {
       )}
       {currentlySelectedPokemon && (
         <PokemonInfo
+          key={1}
           {...currentlySelectedPokemon}
-          japanName={pokemonSpeciesArray[currentlySelectedPokemon.id - 1]}
+          extendedInfoArray={currentlySelectedPokemonExtendedInfo}
         />
       )}
     </MainLayout>

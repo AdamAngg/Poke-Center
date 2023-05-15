@@ -10,6 +10,7 @@ export const UseFetchPokemonExtendedArray = () => {
   const isLoadingMainArray = useSelector(
     (state) => state?.pokemonReducer?.loading
   );
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (isLoadingMainArray === "loaded")
