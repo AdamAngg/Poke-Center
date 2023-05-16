@@ -3,6 +3,7 @@ import axios from "axios";
 
 const initialState = {
   pokemon: [],
+  pokemonLikedArray: [],
   loading: null,
   Error: "",
   currentlySelectedPokemon: null,
@@ -30,6 +31,11 @@ export const pokemonSlice = createSlice({
     addCurrentPokemonExtendedInfo: (state, action) => {
       state.currentlySelectedPokemonExtendedInfo = action.payload;
     },
+    addLikedPokemon(state) {
+      state.pokemonLikedArray.push({
+        pokemon: state.currentlySelectedPokemon,
+      });
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchPokemon.pending, (state) => {
@@ -51,5 +57,6 @@ export const {
   addCurrentPokemon,
   addSearchPokemon,
   addCurrentPokemonExtendedInfo,
+  addLikedPokemon,
 } = pokemonSlice.actions;
 export default pokemonSlice.reducer;

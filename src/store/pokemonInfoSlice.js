@@ -5,7 +5,6 @@ import { returnSlicedArray } from "../helpers/returnSlicedArray.helper";
 const initialState = {
   pokemonExtendedInfoArray: [],
   pokemonSpeciesArray: [],
-  pokemonLikedArray: [],
   error: "",
   loading: null,
 };
@@ -78,5 +77,5 @@ export const pokemonInfoSlice = createSlice({
     });
   },
 });
-export const { addIdOfClickedOne } = pokemonInfoSlice.actions;
+
 export default pokemonInfoSlice.reducer;

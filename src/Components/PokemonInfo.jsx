@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Slider } from "./Slider";
 import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 import { styled } from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { addLikedPokemon } from "../store/pokemonSlice";
 const StyledButton = styled.button`
   background-color: ${(props) => `var(--${props.color})`};
   color: #fff3e2;
@@ -14,6 +16,17 @@ export const PokemonInfo = ({
   stats,
   extendedInfoArray,
 }) => {
+  const likedArray = useSelector(
+    (state) => state.pokemonReducer.pokemonLikedArray
+  );
+
+  const hasMatchingID = likedArray.some((obj) => obj.pokemon.id === id);
+  const dispatch = useDispatch();
+  const onClickHandler = () => {
+    if (hasMatchingID) return;
+    dispatch(addLikedPokemon(true));
+  };
+  console.log(likedArray);
   return (
     <div className="pokemoninfo-container ">
       <Slider
@@ -30,6 +43,7 @@ export const PokemonInfo = ({
       <div className="description">
         <h3>{extendedInfoArray?.flavor_text_entries[9]?.flavor_text}</h3>
       </div>
+
       <div className="types">
         {types.map((type, i) => (
           <StyledButton
@@ -42,16 +56,18 @@ export const PokemonInfo = ({
         ))}
       </div>
       <div className="stats-container">
-        {stats.slice(1).map((stats) => (
-          <div className="stat">
+        {stats.slice(1).map((stats, i) => (
+          <div className="stat" key={i}>
             <span>{stats.base_stat}</span>
             <span>{capitalizeFirstLetter(stats.stat.name)}</span>
           </div>
         ))}
       </div>
-      <div class="pokeball">
-        <div className="pokeball__button"></div>
-      </div>
+      {hasMatchingID ? (
+        <div className="pokeball">
+          <div className="pokeball__button"></div>
+        </div>
+      ) : null}
     </div>
   );
 };

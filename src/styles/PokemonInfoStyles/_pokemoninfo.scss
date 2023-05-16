@@ -9,6 +9,8 @@
   flex-direction: column;
   gap: 2.6rem;
   overflow: hidden;
+  max-height: 100%;
+  align-self: flex-start;
 }
 .titles {
   display: flex;
@@ -51,6 +53,7 @@
     font-size: $h3-size;
   }
 }
+
 .description {
   padding: 2rem;
   display: inline-block;
@@ -59,7 +62,12 @@
     color: $txt-color-secondary;
   }
 }
+
 .pokeball {
+  inset: 0;
+  margin: auto;
+
+  opacity: 1;
   position: relative;
   width: 7rem;
   height: 7rem;
@@ -68,7 +76,8 @@
   border-radius: 50%;
   overflow: hidden;
   box-shadow: inset -10px 10px 0 10px #ccc;
-  animation: shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 3;
+  animation: fall 0.25s ease-in-out,
+    shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 3;
 }
 .pokeball::before,
 .pokeball::after {
@@ -90,35 +99,50 @@
   position: absolute;
   top: calc(50% - 2px);
   left: calc(50% - 4px);
-  width: 9px;
-  height: 9px;
+  width: 15%;
+  height: 15%;
   background: #7f8c8d;
-  border: 2px solid #fff;
+  border: 1px solid #fff;
   border-radius: 50%;
   z-index: 10;
   box-shadow: 0 0 0 3px black;
   animation: blink 0.5s alternate 7;
 }
-@keyframes shake {
-  0% {
-    transform: translate(0, 0) rotate(0);
-  }
-  20% {
-    transform: translate(-10px, 0) rotate(-20deg);
-  }
-  30% {
-    transform: translate(10px, 0) rotate(20deg);
-  }
-  50% {
-    transform: translate(-10px, 0) rotate(-10deg);
-  }
-  60% {
-    transform: translate(10px, 0) rotate(10deg);
-  }
-  100% {
-    transform: translate(0, 0) rotate(0);
-  }
-}
+
+// @keyframes fall {
+//   0% {
+//     top: -100%;
+//   }
+//   60% {
+//     top: 0;
+//   }
+//   80% {
+//     top: -20%;
+//   }
+//   100% {
+//     top: 0;
+//   }
+// }
+// @keyframes shake {
+//   0% {
+//     transform: translate(0, 0) rotate(0);
+//   }
+//   20% {
+//     transform: translate(-10px, 0) rotate(-20deg);
+//   }
+//   30% {
+//     transform: translate(10px, 0) rotate(20deg);
+//   }
+//   50% {
+//     transform: translate(-10px, 0) rotate(-10deg);
+//   }
+//   60% {
+//     transform: translate(10px, 0) rotate(10deg);
+//   }
+//   100% {
+//     transform: translate(0, 0) rotate(0);
+//   }
+// }
 @keyframes blink {
   from {
     background: #eee;
