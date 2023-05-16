@@ -28,7 +28,7 @@ export const PokemonInfo = ({
   };
   console.log(likedArray);
   return (
-    <div className="pokemoninfo-container ">
+    <div className="pokemoninfo-container">
       <Slider
         images={sprites.other["official-artwork"]}
         key={id}
@@ -36,7 +36,12 @@ export const PokemonInfo = ({
         id={id}
         stats={stats}
       />
-      <div className="titles">
+      <div className="titles" onClick={onClickHandler}>
+        <div className="pokeball-container" key={id}>
+          <div className="pokeball" data-active={hasMatchingID}>
+            <div className="pokeball__button" data-active={hasMatchingID}></div>
+          </div>
+        </div>
         <h3>{capitalizeFirstLetter(name)}</h3>
         <h4>{extendedInfoArray?.names[0]?.name}</h4>
       </div>
@@ -63,11 +68,6 @@ export const PokemonInfo = ({
           </div>
         ))}
       </div>
-      {hasMatchingID ? (
-        <div className="pokeball">
-          <div className="pokeball__button"></div>
-        </div>
-      ) : null}
     </div>
   );
 };

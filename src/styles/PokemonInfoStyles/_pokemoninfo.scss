@@ -62,12 +62,12 @@
     color: $txt-color-secondary;
   }
 }
-
+.pokeball-container {
+  position: absolute;
+  left: 50%;
+}
 .pokeball {
-  inset: 0;
-  margin: auto;
-
-  opacity: 1;
+  opacity: 0;
   position: relative;
   width: 7rem;
   height: 7rem;
@@ -76,8 +76,18 @@
   border-radius: 50%;
   overflow: hidden;
   box-shadow: inset -10px 10px 0 10px #ccc;
-  animation: fall 0.25s ease-in-out,
-    shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 3;
+  &__button {
+    position: absolute;
+    top: calc(50% - 2px);
+    left: calc(50% - 4px);
+    width: 15%;
+    height: 15%;
+    background: #7f8c8d;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 0 0 3px black;
+  }
 }
 .pokeball::before,
 .pokeball::after {
@@ -95,54 +105,50 @@
   height: 5px;
   background: #000;
 }
-.pokeball__button {
-  position: absolute;
-  top: calc(50% - 2px);
-  left: calc(50% - 4px);
-  width: 15%;
-  height: 15%;
-  background: #7f8c8d;
-  border: 1px solid #fff;
-  border-radius: 50%;
-  z-index: 10;
-  box-shadow: 0 0 0 3px black;
+.pokeball[data-active="true"] {
+  opacity: 1;
+  animation: fall 0.25s ease-in-out,
+    shake 1.25s cubic-bezier(0.36, 0.07, 0.19, 0.97) 3;
+}
+.pokeball__button[data-active="true"] {
+  opacity: 1;
   animation: blink 0.5s alternate 7;
 }
 
-// @keyframes fall {
-//   0% {
-//     top: -100%;
-//   }
-//   60% {
-//     top: 0;
-//   }
-//   80% {
-//     top: -20%;
-//   }
-//   100% {
-//     top: 0;
-//   }
-// }
-// @keyframes shake {
-//   0% {
-//     transform: translate(0, 0) rotate(0);
-//   }
-//   20% {
-//     transform: translate(-10px, 0) rotate(-20deg);
-//   }
-//   30% {
-//     transform: translate(10px, 0) rotate(20deg);
-//   }
-//   50% {
-//     transform: translate(-10px, 0) rotate(-10deg);
-//   }
-//   60% {
-//     transform: translate(10px, 0) rotate(10deg);
-//   }
-//   100% {
-//     transform: translate(0, 0) rotate(0);
-//   }
-// }
+@keyframes fall {
+  0% {
+    top: -20rem;
+  }
+  60% {
+    top: 0;
+  }
+  80% {
+    top: -2rem;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translate(0, 0) rotate(0);
+  }
+  20% {
+    transform: translate(-10px, 0) rotate(-20deg);
+  }
+  30% {
+    transform: translate(10px, 0) rotate(20deg);
+  }
+  50% {
+    transform: translate(-10px, 0) rotate(-10deg);
+  }
+  60% {
+    transform: translate(10px, 0) rotate(10deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+}
 @keyframes blink {
   from {
     background: #eee;
