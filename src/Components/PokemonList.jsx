@@ -9,7 +9,7 @@ import { LoadingSpinner } from "./Spinner";
 import { useFetchPokemonMainArray } from "../hooks/useFetchPokemonMainArray.hook";
 import { Error } from "./Error";
 import { containsSpecialChars } from "../helpers/containsSpecialChars.helper";
-import { UseFetchPokemonExtendedArray } from "../hooks/useFetchPokemonExtendedArray.hook";
+import { useFetchPokemonExtendedArray } from "../hooks/useFetchPokemonExtendedArray.hook";
 
 export const PokemonList = () => {
   const pokemonExtendedInfoArray = useSelector(
@@ -23,13 +23,13 @@ export const PokemonList = () => {
   );
 
   const isLoadingExtendedArray = useSelector(
-    (state) => state?.pokemonInfoReducer?.loading
+    (state) => state?.pokemonInfoReducer?.extendedInfoArrayloading
   );
   const dispatch = useDispatch();
 
   useFetchPokemonMainArray();
 
-  UseFetchPokemonExtendedArray();
+  useFetchPokemonExtendedArray();
 
   return (
     <div
@@ -62,9 +62,10 @@ export const PokemonList = () => {
           pokemonExtendedInfoArray.map((pokemon, index) => {
             return (
               <PokemnonRow
+                id={pokemon.id}
                 pokemon={pokemon}
                 japanName={pokemonSpeciesArray[index]?.names[0]?.name}
-                id={pokemon.id}
+                key={pokemon.id}
                 onSelect={(pokemon) => {
                   dispatch(
                     addCurrentPokemon(pokemon),

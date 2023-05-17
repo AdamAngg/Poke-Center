@@ -6,7 +6,8 @@ const initialState = {
   pokemonExtendedInfoArray: [],
   pokemonSpeciesArray: [],
   error: "",
-  loading: null,
+  extendedInfoArrayloading: null,
+  speciesArrayLoading: null,
 };
 
 export const fetchCurrentPokemon = createAsyncThunk(
@@ -27,7 +28,7 @@ export const fetchCurrentPokemon = createAsyncThunk(
 export const fetchSpecies = createAsyncThunk(
   "pokemon/fetchSpecies",
   async (_, { getState }) => {
-    const pokemon = await getState().pokemonReducer.pokemon;
+    const pokemon = getState().pokemonReducer.pokemon || [];
     const pokemonSmallerArray = returnSlicedArray(
       pokemon,
       getState().pokemonReducer.searchedPokemon
@@ -36,8 +37,19 @@ export const fetchSpecies = createAsyncThunk(
       (pokemon) => "https://pokeapi.co/api/v2/pokemon-species/" + pokemon.name
     );
 
-    const responses = await axios.all(urlsArray.map((url) => axios.get(url)));
-    const results = responses.map((response) => response.data);
+    const responses = await axios.all(
+      urlsArray.map(async (url) => {
+        try {
+          const response = await axios.get(url);
+          return response.data;
+        } catch (error) {
+          console.error("Błąd żądania:", error);
+          return { error: "Błąd 403 - Odmowa dostępu" };
+        }
+      })
+    );
+
+    const results = responses.filter((result) => !result.error);
     console.log(results);
     return results;
   }
@@ -49,29 +61,29 @@ export const pokemonInfoSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(fetchCurrentPokemon.pending, (state) => {
-      state.loading = "true";
+      state.extendedInfoArrayloading = "true";
     });
     builder.addCase(fetchCurrentPokemon.fulfilled, (state, action) => {
-      state.loading = "loaded";
+      state.extendedInfoArrayloading = "loaded";
       state.pokemonExtendedInfoArray = action.payload;
       state.error = "";
     });
     builder.addCase(fetchCurrentPokemon.rejected, (state, action) => {
-      state.loading = "false";
+      state.extendedInfoArrayloading = "false";
       state.pokemonExtendedInfoArray = [];
       state.error = action.error.message;
     });
 
     builder.addCase(fetchSpecies.pending, (state) => {
-      state.loading = "true";
+      state.speciesArrayLoading = "true";
     });
     builder.addCase(fetchSpecies.fulfilled, (state, action) => {
-      state.loading = "loaded";
+      state.speciesArrayLoading = "loaded";
       state.pokemonSpeciesArray = action.payload;
       state.error = "";
     });
     builder.addCase(fetchSpecies.rejected, (state, action) => {
-      state.loading = "false";
+      state.speciesArrayLoading = "false";
       state.pokemonSpeciesArray = [];
       state.error = action.error.message;
     });

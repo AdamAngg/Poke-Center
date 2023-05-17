@@ -9,6 +9,7 @@ export const PokemnonRow = ({ pokemon, onSelect, japanName, id }) => {
     className: "element__active",
   });
   const hasMatchingID = useHasMatchingID(id);
+
   useChangeOpacity();
   return (
     <li

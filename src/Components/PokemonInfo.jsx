@@ -17,7 +17,6 @@ export const PokemonInfo = ({
   stats,
   extendedInfoArray,
 }) => {
-  const [show, setShow] = useState(true);
   const dispatch = useDispatch();
   const hasMatchingID = useHasMatchingID(id);
 
@@ -43,7 +42,6 @@ export const PokemonInfo = ({
             className="pokeball"
             data-active={hasMatchingID}
             onClick={onClickHandler}
-            style={{ opacity: show ? 1 : 0 }}
           >
             <div className="pokeball__button" data-active={hasMatchingID}></div>
           </div>

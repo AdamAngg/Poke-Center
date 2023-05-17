@@ -9,6 +9,9 @@ export const Header = () => {
   const searchedPokemon = useSelector(
     (state) => state?.pokemonReducer?.searchedPokemon
   );
+  const likedPokemonArray = useSelector(
+    (state) => state?.pokemonReducer?.pokemonLikedArray
+  );
   return (
     <header className="header">
       <img
@@ -51,10 +54,11 @@ export const Header = () => {
 
         <div className="liked">
           <ul className="liked-list">
-            <Error
+            {/* <Error
               ErrorMsg="Your pokemon is no where to be found..."
               ErrorIcon="bug-outline"
-            />
+            /> */}
+            {}
           </ul>
         </div>
       </div>
