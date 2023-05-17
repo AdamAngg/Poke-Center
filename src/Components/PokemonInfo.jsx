@@ -3,7 +3,7 @@ import { Slider } from "./Slider";
 import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 import { styled } from "styled-components";
 import { useDispatch } from "react-redux";
-import { addLikedPokemon } from "../store/pokemonSlice";
+import { addLikedPokemon, deleteLikedPokemon } from "../store/pokemonSlice";
 import { useHasMatchingID } from "../hooks/useHasMatchingID.hook";
 const StyledButton = styled.button`
   background-color: ${(props) => `var(--${props.color})`};
@@ -17,11 +17,14 @@ export const PokemonInfo = ({
   stats,
   extendedInfoArray,
 }) => {
-  const hasMatchingID = useHasMatchingID(id);
+  const [show, setShow] = useState(true);
   const dispatch = useDispatch();
+  const hasMatchingID = useHasMatchingID(id);
+
   const onClickHandler = () => {
-    if (hasMatchingID) return;
-    dispatch(addLikedPokemon());
+    hasMatchingID
+      ? dispatch(deleteLikedPokemon(id))
+      : dispatch(addLikedPokemon());
   };
 
   return (
@@ -33,9 +36,15 @@ export const PokemonInfo = ({
         id={id}
         stats={stats}
       />
-      <div className="titles" onClick={onClickHandler}>
-        <div className="pokeball-container" key={id}>
-          <div className="pokeball" data-active={hasMatchingID}>
+      <div className="titles">
+        <div className="pokeball-container">
+          <div
+            key={id}
+            className="pokeball"
+            data-active={hasMatchingID}
+            onClick={onClickHandler}
+            style={{ opacity: show ? 1 : 0 }}
+          >
             <div className="pokeball__button" data-active={hasMatchingID}></div>
           </div>
         </div>

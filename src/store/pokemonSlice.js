@@ -36,6 +36,11 @@ export const pokemonSlice = createSlice({
         pokemonInfo: state.currentlySelectedPokemon,
       });
     },
+    deleteLikedPokemon(state, action) {
+      state.pokemonLikedArray = state.pokemonLikedArray.filter(
+        (obj) => obj.pokemonInfo.id !== action.payload
+      );
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchPokemon.pending, (state) => {
@@ -58,5 +63,6 @@ export const {
   addSearchPokemon,
   addCurrentPokemonExtendedInfo,
   addLikedPokemon,
+  deleteLikedPokemon,
 } = pokemonSlice.actions;
 export default pokemonSlice.reducer;

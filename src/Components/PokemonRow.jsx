@@ -41,8 +41,10 @@ export const PokemnonRow = ({ pokemon, onSelect, japanName, id }) => {
         <img
           src={require("../assets/images/pokeball.png")}
           alt="logo"
-          className={"header__logo " + (hasMatchingID ? "element__logo" : null)}
-          style={{ opacity: hasMatchingID ? 1 : 0 }}
+          className={
+            "element__logo " +
+            (hasMatchingID ? "element__logo__in" : "element__logo__out")
+          }
         />
       </div>
     </li>

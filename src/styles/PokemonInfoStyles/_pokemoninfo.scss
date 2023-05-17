@@ -67,7 +67,7 @@
   left: 50%;
 }
 .pokeball {
-  opacity: 0;
+  opacity: 1;
   position: relative;
   width: 7rem;
   height: 7rem;
@@ -115,20 +115,6 @@
   animation: blink 0.5s alternate 7;
 }
 
-@keyframes fall {
-  0% {
-    top: -20rem;
-  }
-  60% {
-    top: 0;
-  }
-  80% {
-    top: -2rem;
-  }
-  100% {
-    top: 0;
-  }
-}
 @keyframes shake {
   0% {
     transform: translate(0, 0) rotate(0);
