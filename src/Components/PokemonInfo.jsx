@@ -34,7 +34,7 @@ export const PokemonInfo = ({
         stats={stats}
       />
       <div className="titles" onClick={onClickHandler}>
-        <div className="pokeball-container">
+        <div className="pokeball-container" key={id}>
           <div className="pokeball" data-active={hasMatchingID}>
             <div className="pokeball__button" data-active={hasMatchingID}></div>
           </div>

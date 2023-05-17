@@ -2,17 +2,13 @@ import React from "react";
 import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 import { useToggleClick } from "../hooks/useToggleClick.hook";
 import { useChangeOpacity } from "../hooks/useChangeOpacity.hook";
-import { useSelector } from "react-redux";
+import { useHasMatchingID } from "../hooks/useHasMatchingID.hook";
 export const PokemnonRow = ({ pokemon, onSelect, japanName, id }) => {
   const [onClickHandler, currentElementRef] = useToggleClick({
     element: "element",
     className: "element__active",
   });
-  const likedArray = useSelector(
-    (state) => state.pokemonReducer.pokemonLikedArray
-  );
-  console.log(id);
-  const hasMatchingID = likedArray.some((obj) => obj.pokemonInfo.id === id);
+  const hasMatchingID = useHasMatchingID(id);
   useChangeOpacity();
   return (
     <li
@@ -45,7 +41,7 @@ export const PokemnonRow = ({ pokemon, onSelect, japanName, id }) => {
         <img
           src={require("../assets/images/pokeball.png")}
           alt="logo"
-          className="header__logo"
+          className={"header__logo " + (hasMatchingID ? "element__logo" : null)}
           style={{ opacity: hasMatchingID ? 1 : 0 }}
         />
       </div>
