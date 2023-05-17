@@ -64,7 +64,7 @@ export const PokemonList = () => {
               <PokemnonRow
                 pokemon={pokemon}
                 japanName={pokemonSpeciesArray[index]?.names[0]?.name}
-                key={pokemon.id}
+                id={pokemon.id}
                 onSelect={(pokemon) => {
                   dispatch(
                     addCurrentPokemon(pokemon),

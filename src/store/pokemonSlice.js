@@ -33,7 +33,7 @@ export const pokemonSlice = createSlice({
     },
     addLikedPokemon(state) {
       state.pokemonLikedArray.push({
-        pokemon: state.currentlySelectedPokemon,
+        pokemonInfo: state.currentlySelectedPokemon,
       });
     },
   },
