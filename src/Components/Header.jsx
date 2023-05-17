@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addSearchPokemon } from "../store/pokemonSlice";
 import { Error } from "./Error";
 import { containsSpecialChars } from "../helpers/containsSpecialChars.helper";
+import { PokemnonRow } from "./PokemonRow";
+import { addCurrentPokemon } from "../store/pokemonSlice";
+import { addCurrentPokemonExtendedInfo } from "../store/pokemonSlice";
 export const Header = () => {
   const dispatch = useDispatch();
   const searchedPokemon = useSelector(
@@ -12,6 +15,10 @@ export const Header = () => {
   const likedPokemonArray = useSelector(
     (state) => state?.pokemonReducer?.pokemonLikedArray
   );
+  const pokemonSpeciesArray = useSelector(
+    (state) => state?.pokemonInfoReducer?.pokemonSpeciesArray
+  );
+  console.log(likedPokemonArray);
   return (
     <header className="header">
       <img
@@ -54,11 +61,32 @@ export const Header = () => {
 
         <div className="liked">
           <ul className="liked-list">
-            {/* <Error
-              ErrorMsg="Your pokemon is no where to be found..."
-              ErrorIcon="bug-outline"
-            /> */}
-            {}
+            {likedPokemonArray.pokemonInfo !== [] ? (
+              likedPokemonArray.map((pokemon, index) => {
+                return (
+                  <PokemnonRow
+                    id={pokemon.pokemonInfo.id}
+                    pokemon={pokemon.pokemonInfo}
+                    japanName={pokemonSpeciesArray[index]?.names[0]?.name}
+                    onSelect={(pokemon) => {
+                      dispatch(
+                        addCurrentPokemon(pokemon.pokemonInfo),
+                        dispatch(
+                          addCurrentPokemonExtendedInfo(
+                            pokemonSpeciesArray[index]
+                          )
+                        )
+                      );
+                    }}
+                  />
+                );
+              })
+            ) : (
+              <Error
+                ErrorMsg="Your pokemon is no where to be found..."
+                ErrorIcon="bug-outline"
+              />
+            )}
           </ul>
         </div>
       </div>

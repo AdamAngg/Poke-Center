@@ -63,6 +63,7 @@ export const PokemonList = () => {
             return (
               <PokemnonRow
                 id={pokemon.id}
+                opacity={true}
                 pokemon={pokemon}
                 japanName={pokemonSpeciesArray[index]?.names[0]?.name}
                 key={pokemon.id}

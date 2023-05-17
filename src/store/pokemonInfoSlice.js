@@ -50,7 +50,7 @@ export const fetchSpecies = createAsyncThunk(
     );
 
     const results = responses.filter((result) => !result.error);
-    console.log(results);
+
     return results;
   }
 );

@@ -3,7 +3,13 @@ import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 import { useToggleClick } from "../hooks/useToggleClick.hook";
 import { useChangeOpacity } from "../hooks/useChangeOpacity.hook";
 import { useHasMatchingID } from "../hooks/useHasMatchingID.hook";
-export const PokemnonRow = ({ pokemon, onSelect, japanName, id }) => {
+export const PokemnonRow = ({
+  pokemon,
+  onSelect,
+  japanName,
+  id,
+  opacity = false,
+}) => {
   const [onClickHandler, currentElementRef] = useToggleClick({
     element: "element",
     className: "element__active",
@@ -17,7 +23,7 @@ export const PokemnonRow = ({ pokemon, onSelect, japanName, id }) => {
         onSelect(pokemon);
         onClickHandler();
       }}
-      className={"element element__opacity"}
+      className={"element" + (opacity ? "element__opacity" : "")}
       ref={currentElementRef}
     >
       <div className="element__container">
