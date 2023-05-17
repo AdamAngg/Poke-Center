@@ -6,7 +6,7 @@ const initialState = {
   pokemonExtendedInfoArray: [],
   pokemonSpeciesArray: [],
   error: "",
-  extendedInfoArrayloading: null,
+  extendedInfoArrayLoading: null,
   speciesArrayLoading: null,
 };
 

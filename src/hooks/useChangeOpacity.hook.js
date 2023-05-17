@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 
-export const useChangeOpacity = () => {
+export const useChangeOpacity = (boolean) => {
   useEffect(() => {
+    if (!boolean) return;
     const element = document.querySelectorAll(".element");
     element.forEach((e, i) => {
       e.classList.add("element__opacity");
