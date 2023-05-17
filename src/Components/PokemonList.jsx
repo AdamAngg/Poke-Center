@@ -10,7 +10,6 @@ import { useFetchPokemonMainArray } from "../hooks/useFetchPokemonMainArray.hook
 import { Error } from "./Error";
 import { containsSpecialChars } from "../helpers/containsSpecialChars.helper";
 import { useFetchPokemonExtendedArray } from "../hooks/useFetchPokemonExtendedArray.hook";
-import { useChangeOpacity } from "../hooks/useChangeOpacity.hook";
 
 export const PokemonList = () => {
   const pokemonExtendedInfoArray = useSelector(
@@ -61,7 +60,6 @@ export const PokemonList = () => {
         )}
         {isLoadingExtendedArray === "loaded" &&
           pokemonExtendedInfoArray.map((pokemon, index) => {
-            console.log(pokemon, "h");
             return (
               <PokemnonRow
                 key={pokemon.id}

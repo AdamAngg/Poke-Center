@@ -66,7 +66,6 @@ export const Header = () => {
           <ul className="liked-list">
             {likedPokemonArray.length > 0 ? (
               likedPokemonArray.map((pokemon, index) => {
-                console.log(pokemon.pokemonInfo);
                 return (
                   <PokemnonRow
                     boolean={false}

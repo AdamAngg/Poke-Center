@@ -8,8 +8,8 @@ export const Generations = () => {
   };
   return (
     <div className="generations-container">
-      {Object.entries(pokemonGenerationsUrl).map(([key, value]) => (
-        <GenerationButton key={key} name={key} value={value} />
+      {Object.entries(pokemonGenerationsUrl).map(([key, value], id) => (
+        <GenerationButton key={key} name={key} value={value} id={id + 1} />
       ))}
     </div>
   );

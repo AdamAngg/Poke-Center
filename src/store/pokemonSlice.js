@@ -4,6 +4,7 @@ import axios from "axios";
 const initialState = {
   pokemon: [],
   pokemonLikedArray: [],
+  pokemonNodeClicked: null,
   loading: null,
   Error: "",
   currentlySelectedPokemon: null,
@@ -24,6 +25,9 @@ export const pokemonSlice = createSlice({
   reducers: {
     addCurrentPokemon: (state, action) => {
       state.currentlySelectedPokemon = action.payload;
+    },
+    addPokemonNodeClicked: (state, action) => {
+      state.pokemonNodeClicked = action.payload;
     },
     addSearchPokemon: (state, action) => {
       state.searchedPokemon = action.payload;
@@ -64,5 +68,6 @@ export const {
   addCurrentPokemonExtendedInfo,
   addLikedPokemon,
   deleteLikedPokemon,
+  addPokemonNodeClicked,
 } = pokemonSlice.actions;
 export default pokemonSlice.reducer;

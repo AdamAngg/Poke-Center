@@ -15,7 +15,6 @@ export const App = () => {
   const currentlySelectedPokemonExtendedInfo = useSelector(
     (state) => state.pokemonReducer.currentlySelectedPokemonExtendedInfo
   );
-  console.log(currentlySelectedPokemon);
 
   return (
     <MainLayout>
