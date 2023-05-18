@@ -1,4 +1,4 @@
-import { GenerationButton } from "../UI/GenerationButton";
+import { GenerationButton } from "./GenerationButton";
 export const Generations = () => {
   const pokemonGenerationsUrl = {
     Generation1: "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0",

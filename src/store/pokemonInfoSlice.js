@@ -26,7 +26,9 @@ export const fetchCurrentPokemon = createAsyncThunk(
 
     const pokemonSmallerArray = returnSlicedArray(
       pokemon,
-      getState().pokemonReducer.searchedPokemon
+      getState().pokemonReducer.searchedPokemon,
+      getState().pokemonReducer.currentPage,
+      getState().pokemonReducer.itemsPerPage
     );
     const urlsArray = pokemonSmallerArray.map((pokemon) => pokemon.url);
     const responses = await axios.all(urlsArray.map((url) => axios.get(url)));
@@ -41,7 +43,9 @@ export const fetchSpecies = createAsyncThunk(
     const pokemon = getState().pokemonInfoReducer.pokemon;
     const pokemonSmallerArray = returnSlicedArray(
       pokemon,
-      getState().pokemonReducer.searchedPokemon
+      getState().pokemonReducer.searchedPokemon,
+      getState().pokemonReducer.currentPage,
+      getState().pokemonReducer.itemsPerPage
     );
     const urlsArray = pokemonSmallerArray.map(
       (pokemon) => "https://pokeapi.co/api/v2/pokemon-species/" + pokemon.name

@@ -1,5 +1,11 @@
-export const returnSlicedArray = (array, searchedPokemon) => {
+export const returnSlicedArray = (
+  array,
+  searchedPokemon,
+  currentPage,
+  itemsPerPage
+) => {
+  const slice = currentPage * itemsPerPage;
   return array
     .filter((pokemon) => pokemon.name.toLowerCase().includes(searchedPokemon))
-    .slice(0, 20);
+    .slice(slice - itemsPerPage, slice);
 };

@@ -2,11 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   pokemonNodeClicked: null,
-  loading: null,
-  Error: "",
   currentlySelectedPokemon: null,
   currentlySelectedPokemonExtendedInfo: null,
   searchedPokemon: "",
+  currentPage: 1,
+  itemsPerPage: 10,
 };
 
 export const pokemonSlice = createSlice({
