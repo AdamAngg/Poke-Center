@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Slider } from "./Slider";
 import { capitalizeFirstLetter } from "../helpers/capitalizeFirstLetter.helper";
 import { styled } from "styled-components";
 import { useDispatch } from "react-redux";
-import { addLikedPokemon, deleteLikedPokemon } from "../store/pokemonSlice";
 import { useHasMatchingID } from "../hooks/useHasMatchingID.hook";
+import { addLikedPokemon, deleteLikedPokemon } from "../store/pokemonInfoSlice";
 const StyledButton = styled.button`
   background-color: ${(props) => `var(--${props.color})`};
   color: #fff3e2;

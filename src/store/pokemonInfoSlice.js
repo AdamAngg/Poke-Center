@@ -3,17 +3,27 @@ import axios from "axios";
 import { returnSlicedArray } from "../helpers/returnSlicedArray.helper";
 
 const initialState = {
+  pokemon: [],
   pokemonExtendedInfoArray: [],
   pokemonSpeciesArray: [],
+  pokemonLikedArray: [],
   error: "",
+  pokemonArrayLoading: null,
   extendedInfoArrayLoading: null,
   speciesArrayLoading: null,
 };
 
+export const fetchPokemon = createAsyncThunk(
+  "pokemon/fetchPokemon",
+  async (url = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0") => {
+    return await axios.get(url).then((Response) => Response.data.results);
+  }
+);
 export const fetchCurrentPokemon = createAsyncThunk(
   "pokemon/fetchCurrentPokemon",
   async (_, { getState }) => {
-    const pokemon = await getState().pokemonReducer.pokemon;
+    const pokemon = getState().pokemonInfoReducer.pokemon;
+
     const pokemonSmallerArray = returnSlicedArray(
       pokemon,
       getState().pokemonReducer.searchedPokemon
@@ -28,7 +38,7 @@ export const fetchCurrentPokemon = createAsyncThunk(
 export const fetchSpecies = createAsyncThunk(
   "pokemon/fetchSpecies",
   async (_, { getState }) => {
-    const pokemon = getState().pokemonReducer.pokemon || [];
+    const pokemon = getState().pokemonInfoReducer.pokemon;
     const pokemonSmallerArray = returnSlicedArray(
       pokemon,
       getState().pokemonReducer.searchedPokemon
@@ -36,21 +46,18 @@ export const fetchSpecies = createAsyncThunk(
     const urlsArray = pokemonSmallerArray.map(
       (pokemon) => "https://pokeapi.co/api/v2/pokemon-species/" + pokemon.name
     );
-
     const responses = await axios.all(
       urlsArray.map(async (url) => {
         try {
           const response = await axios.get(url);
           return response.data;
         } catch (error) {
-          console.error("Błąd żądania:", error);
-          return { error: "Błąd 403 - Odmowa dostępu" };
+          console.error("Error:", error);
+          return { error: "Error 403" };
         }
       })
     );
-
     const results = responses.filter((result) => !result.error);
-
     return results;
   }
 );
@@ -58,7 +65,18 @@ export const fetchSpecies = createAsyncThunk(
 export const pokemonInfoSlice = createSlice({
   name: "pokemon",
   initialState,
-  reducers: {},
+  reducers: {
+    addLikedPokemon(state) {
+      state.pokemonLikedArray.push({
+        pokemonInfo: state.currentlySelectedPokemon,
+      });
+    },
+    deleteLikedPokemon(state, action) {
+      state.pokemonLikedArray = state.pokemonLikedArray.filter(
+        (obj) => obj.pokemonInfo.id !== action.payload
+      );
+    },
+  },
   extraReducers(builder) {
     builder.addCase(fetchCurrentPokemon.pending, (state) => {
       state.extendedInfoArrayloading = "true";
@@ -87,7 +105,22 @@ export const pokemonInfoSlice = createSlice({
       state.pokemonSpeciesArray = [];
       state.error = action.error.message;
     });
+
+    builder.addCase(fetchPokemon.pending, (state) => {
+      state.pokemonArrayLoading = "true";
+    });
+    builder.addCase(fetchPokemon.fulfilled, (state, action) => {
+      state.pokemonArrayLoading = "loaded";
+      state.pokemon = action.payload;
+      console.log(state.pokemon);
+      state.error = "";
+    });
+    builder.addCase(fetchPokemon.rejected, (state, action) => {
+      state.pokemonArrayLoading = "false";
+      state.pokemon = [];
+      state.error = action.error.message;
+    });
   },
 });
-
+export const { addLikedPokemon, deleteLikedPokemon } = pokemonInfoSlice.actions;
 export default pokemonInfoSlice.reducer;

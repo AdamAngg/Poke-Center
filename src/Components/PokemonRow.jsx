@@ -15,8 +15,7 @@ export const PokemnonRow = ({ pokemon, onSelect, japanName, id, boolean }) => {
   const pokemonNodeClicked = useSelector(
     (state) => state.pokemonReducer.pokemonNodeClicked
   );
-  console.log(pokemonNodeClicked);
-  console.log(id);
+
   return (
     <li
       onClick={() => {

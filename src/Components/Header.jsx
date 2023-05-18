@@ -16,7 +16,7 @@ export const Header = () => {
     (state) => state?.pokemonReducer?.searchedPokemon
   );
   const likedPokemonArray = useSelector(
-    (state) => state?.pokemonReducer?.pokemonLikedArray
+    (state) => state?.pokemonInfoReducer?.pokemonLikedArray
   );
   const pokemonSpeciesArray = useSelector(
     (state) => state?.pokemonInfoReducer?.pokemonSpeciesArray

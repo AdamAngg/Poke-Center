@@ -1,9 +1,6 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  pokemon: [],
-  pokemonLikedArray: [],
   pokemonNodeClicked: null,
   loading: null,
   Error: "",
@@ -11,13 +8,6 @@ const initialState = {
   currentlySelectedPokemonExtendedInfo: null,
   searchedPokemon: "",
 };
-
-export const fetchPokemon = createAsyncThunk(
-  "pokemon/fetchPokemon",
-  async (url = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0") => {
-    return await axios.get(url).then((Response) => Response.data.results);
-  }
-);
 
 export const pokemonSlice = createSlice({
   name: "pokemon",
@@ -35,31 +25,6 @@ export const pokemonSlice = createSlice({
     addCurrentPokemonExtendedInfo: (state, action) => {
       state.currentlySelectedPokemonExtendedInfo = action.payload;
     },
-    addLikedPokemon(state) {
-      state.pokemonLikedArray.push({
-        pokemonInfo: state.currentlySelectedPokemon,
-      });
-    },
-    deleteLikedPokemon(state, action) {
-      state.pokemonLikedArray = state.pokemonLikedArray.filter(
-        (obj) => obj.pokemonInfo.id !== action.payload
-      );
-    },
-  },
-  extraReducers(builder) {
-    builder.addCase(fetchPokemon.pending, (state) => {
-      state.loading = "true";
-    });
-    builder.addCase(fetchPokemon.fulfilled, (state, action) => {
-      state.loading = "loaded";
-      state.pokemon = action.payload;
-      state.Error = "";
-    });
-    builder.addCase(fetchPokemon.rejected, (state, action) => {
-      state.loading = "false";
-      state.pokemon = [];
-      state.Error = action.error.message;
-    });
   },
 });
 export const {

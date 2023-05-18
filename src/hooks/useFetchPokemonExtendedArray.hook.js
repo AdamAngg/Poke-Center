@@ -8,7 +8,7 @@ export const useFetchPokemonExtendedArray = () => {
     (state) => state?.pokemonReducer?.searchedPokemon
   );
   const isLoadingMainArray = useSelector(
-    (state) => state?.pokemonReducer?.loading
+    (state) => state?.pokemonInfoReducer?.pokemonArrayLoading
   );
 
   const dispatch = useDispatch();
