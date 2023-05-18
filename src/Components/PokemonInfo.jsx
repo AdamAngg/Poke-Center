@@ -10,6 +10,7 @@ const StyledButton = styled.button`
   color: #fff3e2;
 `;
 export const PokemonInfo = ({
+  currentlySelectedPokemon,
   name,
   sprites,
   id,
@@ -17,28 +18,29 @@ export const PokemonInfo = ({
   stats,
   extendedInfoArray,
 }) => {
+  console.log(currentlySelectedPokemon);
   const dispatch = useDispatch();
-  const hasMatchingID = useHasMatchingID(id);
+  const hasMatchingID = useHasMatchingID(currentlySelectedPokemon.id);
 
   const onClickHandler = () => {
     hasMatchingID
-      ? dispatch(deleteLikedPokemon(id))
-      : dispatch(addLikedPokemon());
+      ? dispatch(deleteLikedPokemon(currentlySelectedPokemon.id))
+      : dispatch(addLikedPokemon(currentlySelectedPokemon));
   };
 
   return (
     <div className="pokemoninfo-container">
       <Slider
-        images={sprites.other["official-artwork"]}
-        key={id}
-        types={types}
-        id={id}
-        stats={stats}
+        images={currentlySelectedPokemon.sprites.other["official-artwork"]}
+        key={currentlySelectedPokemon.id}
+        types={currentlySelectedPokemon.types}
+        id={currentlySelectedPokemon.id}
+        stats={currentlySelectedPokemon.stats}
       />
       <div className="titles">
         <div className="pokeball-container">
           <div
-            key={id}
+            key={currentlySelectedPokemon.id}
             className="pokeball"
             data-active={hasMatchingID}
             onClick={onClickHandler}
@@ -46,7 +48,7 @@ export const PokemonInfo = ({
             <div className="pokeball__button" data-active={hasMatchingID}></div>
           </div>
         </div>
-        <h3>{capitalizeFirstLetter(name)}</h3>
+        <h3>{capitalizeFirstLetter(currentlySelectedPokemon.name)}</h3>
         <h4>{extendedInfoArray?.names[0]?.name}</h4>
       </div>
       <div className="description">
@@ -54,7 +56,7 @@ export const PokemonInfo = ({
       </div>
 
       <div className="types">
-        {types.map((type, i) => (
+        {currentlySelectedPokemon.types.map((type, i) => (
           <StyledButton
             key={i}
             className="slider__btn__stats"
@@ -65,7 +67,7 @@ export const PokemonInfo = ({
         ))}
       </div>
       <div className="stats-container">
-        {stats.slice(1).map((stats, i) => (
+        {currentlySelectedPokemon.stats.slice(1).map((stats, i) => (
           <div className="stat" key={i}>
             <span>{stats.base_stat}</span>
             <span>{capitalizeFirstLetter(stats.stat.name)}</span>

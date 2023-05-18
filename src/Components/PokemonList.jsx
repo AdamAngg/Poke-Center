@@ -25,6 +25,9 @@ export const PokemonList = () => {
   const isLoadingExtendedArray = useSelector(
     (state) => state?.pokemonInfoReducer?.extendedInfoArrayloading
   );
+  const currentPage = useSelector(
+    (state) => state?.pokemonReducer?.currentPage
+  );
   const dispatch = useDispatch();
 
   useFetchPokemonMainArray();
@@ -79,6 +82,19 @@ export const PokemonList = () => {
             );
           })}
       </ul>
+      <div className="pagination-container">
+        {currentPage - 1 === 0 ? (
+          ""
+        ) : (
+          <button className="generations-btn pagination--hover--left">
+            <span>Page {currentPage - 1}</span>
+          </button>
+        )}
+
+        <button className="generations-btn pagination--hover--right">
+          <span>Page {currentPage + 1}</span>
+        </button>
+      </div>
     </div>
   );
 };

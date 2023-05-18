@@ -31,7 +31,7 @@ export const App = () => {
       )}
       {currentlySelectedPokemon && (
         <PokemonInfo
-          {...currentlySelectedPokemon}
+          currentlySelectedPokemon={currentlySelectedPokemon}
           extendedInfoArray={currentlySelectedPokemonExtendedInfo}
         />
       )}

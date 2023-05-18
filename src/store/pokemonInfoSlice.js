@@ -70,9 +70,9 @@ export const pokemonInfoSlice = createSlice({
   name: "pokemon",
   initialState,
   reducers: {
-    addLikedPokemon(state) {
+    addLikedPokemon(state, action) {
       state.pokemonLikedArray.push({
-        pokemonInfo: state.currentlySelectedPokemon,
+        pokemonInfo: action.payload,
       });
     },
     deleteLikedPokemon(state, action) {
@@ -116,7 +116,6 @@ export const pokemonInfoSlice = createSlice({
     builder.addCase(fetchPokemon.fulfilled, (state, action) => {
       state.pokemonArrayLoading = "loaded";
       state.pokemon = action.payload;
-      console.log(state.pokemon);
       state.error = "";
     });
     builder.addCase(fetchPokemon.rejected, (state, action) => {

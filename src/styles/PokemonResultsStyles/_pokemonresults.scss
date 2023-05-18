@@ -14,7 +14,7 @@
 .results {
   padding: 3rem 0;
   list-style: none;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 
   p {
     font-size: $p-size;
@@ -154,6 +154,52 @@
     font-size: $h3-size;
     font-family: $text-font;
     padding: 0 1.6rem 0 1.6rem;
+  }
+}
+.pagination-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2.6rem;
+}
+.pagination--hover--left {
+  position: relative;
+  font-size: $p-size;
+
+  &:hover span {
+    opacity: 0;
+  }
+  &:hover::before {
+    content: "\2190";
+    position: absolute;
+  }
+  &::before {
+    font-size: $p-size;
+    content: "";
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
+  }
+}
+.pagination--hover--right {
+  position: relative;
+  font-size: $p-size;
+
+  &:hover span {
+    opacity: 0;
+  }
+  &:hover::before {
+    content: "\2192";
+    position: absolute;
+  }
+  &::before {
+    font-size: $p-size;
+    content: "";
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
   }
 }
 @-webkit-keyframes slide-left {

@@ -42,13 +42,13 @@ svg {
 .main {
   @extend %grid;
   max-width: 120rem;
-  min-height: 117rem;
+  min-height: 95rem;
   box-shadow: 0 2rem 6rem 0.5rem rgba(14, 12, 12, 0.375);
   border-radius: 1rem;
   background-color: $bg-color-content;
   margin: 4vw auto;
   overflow: hidden;
-  grid-template-rows: 10rem 6rem minmax(100rem, auto);
+  grid-template-rows: 10rem 6rem minmax(94.5rem, auto);
   grid-template-areas:
     "head head"
     "generations generations"
