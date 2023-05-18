@@ -23,7 +23,6 @@ export const fetchCurrentPokemon = createAsyncThunk(
   "pokemon/fetchCurrentPokemon",
   async (_, { getState }) => {
     const pokemon = getState().pokemonInfoReducer.pokemon;
-
     const pokemonSmallerArray = returnSlicedArray(
       pokemon,
       getState().pokemonReducer.searchedPokemon,

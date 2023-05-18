@@ -25,14 +25,24 @@ export const pokemonSlice = createSlice({
     addCurrentPokemonExtendedInfo: (state, action) => {
       state.currentlySelectedPokemonExtendedInfo = action.payload;
     },
+    incrementCurrentPage: (state) => {
+      state.currentPage += 1;
+    },
+    decrementCurrentPage: (state) => {
+      state.currentPage -= 1;
+    },
+    setDefaultPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
   },
 });
 export const {
   addCurrentPokemon,
   addSearchPokemon,
   addCurrentPokemonExtendedInfo,
-  addLikedPokemon,
-  deleteLikedPokemon,
   addPokemonNodeClicked,
+  incrementCurrentPage,
+  decrementCurrentPage,
+  setDefaultPage,
 } = pokemonSlice.actions;
 export default pokemonSlice.reducer;

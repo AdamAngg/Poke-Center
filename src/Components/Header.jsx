@@ -68,7 +68,7 @@ export const Header = () => {
               likedPokemonArray.map((pokemon, index) => {
                 return (
                   <PokemnonRow
-                    boolean={false}
+                    changeOpacity={false}
                     key={pokemon.pokemonInfo.id}
                     id={pokemon.pokemonInfo.id}
                     pokemon={pokemon.pokemonInfo}

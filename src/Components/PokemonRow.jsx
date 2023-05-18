@@ -4,14 +4,20 @@ import { useToggleClick } from "../hooks/useToggleClick.hook";
 import { useChangeOpacity } from "../hooks/useChangeOpacity.hook";
 import { useHasMatchingID } from "../hooks/useHasMatchingID.hook";
 import { useSelector } from "react-redux";
-export const PokemnonRow = ({ pokemon, onSelect, japanName, id, boolean }) => {
+export const PokemnonRow = ({
+  pokemon,
+  onSelect,
+  japanName,
+  id,
+  changeOpacity,
+}) => {
   const [onClickHandler, currentElementRef] = useToggleClick({
     element: "element",
     className: "element__active",
     dispatching: true,
   });
   const hasMatchingID = useHasMatchingID(id);
-  useChangeOpacity(boolean);
+  useChangeOpacity(changeOpacity);
   const pokemonNodeClicked = useSelector(
     (state) => state.pokemonReducer.pokemonNodeClicked
   );

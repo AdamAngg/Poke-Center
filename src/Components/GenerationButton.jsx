@@ -1,6 +1,7 @@
 import { useToggleClick } from "../hooks/useToggleClick.hook";
 import { useDispatch } from "react-redux";
 import { fetchPokemon } from "../store/pokemonInfoSlice";
+import { setDefaultPage } from "../store/pokemonSlice";
 export const GenerationButton = ({ name, value, id }) => {
   const [onClickHandler, currentElementRef] = useToggleClick({
     element: "generations-btn__span",
@@ -16,6 +17,7 @@ export const GenerationButton = ({ name, value, id }) => {
         onClick={() => {
           dispatch(fetchPokemon(value));
           onClickHandler();
+          dispatch(setDefaultPage(1));
         }}
         className="generations-btn "
       >

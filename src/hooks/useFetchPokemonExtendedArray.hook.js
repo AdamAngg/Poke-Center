@@ -10,10 +10,13 @@ export const useFetchPokemonExtendedArray = () => {
   const isLoadingMainArray = useSelector(
     (state) => state?.pokemonInfoReducer?.pokemonArrayLoading
   );
+  const currentPage = useSelector(
+    (state) => state?.pokemonReducer?.currentPage
+  );
 
   const dispatch = useDispatch();
   useEffect(() => {
     if (isLoadingMainArray === "loaded")
       dispatch(fetchCurrentPokemon(), dispatch(fetchSpecies()));
-  }, [isLoadingMainArray, searchedPokemon]);
+  }, [isLoadingMainArray, searchedPokemon, currentPage]);
 };

@@ -11,11 +11,7 @@ const StyledButton = styled.button`
 `;
 export const PokemonInfo = ({
   currentlySelectedPokemon,
-  name,
-  sprites,
-  id,
-  types,
-  stats,
+
   extendedInfoArray,
 }) => {
   console.log(currentlySelectedPokemon);

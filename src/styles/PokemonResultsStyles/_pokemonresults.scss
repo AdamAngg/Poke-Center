@@ -135,6 +135,9 @@
     &__water {
       background-image: linear-gradient(to right bottom, #ffffff, #1422dc);
     }
+    &__ground {
+      background-image: linear-gradient(to right bottom, #ffffff, #a4a053);
+    }
   }
 }
 .element:hover {

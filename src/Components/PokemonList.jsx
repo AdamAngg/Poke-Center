@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addCurrentPokemon,
   addCurrentPokemonExtendedInfo,
+  incrementCurrentPage,
+  decrementCurrentPage,
 } from "../store/pokemonSlice";
 import { LoadingSpinner } from "./Spinner";
 import { useFetchPokemonMainArray } from "../hooks/useFetchPokemonMainArray.hook";
@@ -28,6 +30,7 @@ export const PokemonList = () => {
   const currentPage = useSelector(
     (state) => state?.pokemonReducer?.currentPage
   );
+
   const dispatch = useDispatch();
 
   useFetchPokemonMainArray();
@@ -82,19 +85,30 @@ export const PokemonList = () => {
             );
           })}
       </ul>
-      <div className="pagination-container">
-        {currentPage - 1 === 0 ? (
-          ""
-        ) : (
-          <button className="generations-btn pagination--hover--left">
-            <span>Page {currentPage - 1}</span>
-          </button>
-        )}
-
-        <button className="generations-btn pagination--hover--right">
-          <span>Page {currentPage + 1}</span>
-        </button>
-      </div>
+      {isLoadingExtendedArray === "loaded" && (
+        <div className="pagination-container">
+          {currentPage - 1 === 0 ? (
+            ""
+          ) : (
+            <button
+              className="generations-btn pagination--hover--left"
+              onClick={() => dispatch(decrementCurrentPage())}
+            >
+              <span>Page {currentPage - 1}</span>
+            </button>
+          )}
+          {pokemonExtendedInfoArray.length < 10 ? (
+            ""
+          ) : (
+            <button
+              className="generations-btn pagination--hover--right"
+              onClick={() => dispatch(incrementCurrentPage())}
+            >
+              <span>Page {currentPage + 1}</span>
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 };
