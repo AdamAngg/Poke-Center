@@ -46,7 +46,7 @@ export const fetchSpecies = createAsyncThunk(
       1,
       10
     );
-    console.log(pokemonSmallerArray);
+
     const urlsArray = pokemonSmallerArray.map(
       (pokemon) =>
         "https://pokeapi.co/api/v2/pokemon-species/" + pokemon.species.name

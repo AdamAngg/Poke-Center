@@ -17,6 +17,9 @@ export const PokemonList = () => {
   const pokemonExtendedInfoArray = useSelector(
     (state) => state?.pokemonInfoReducer?.pokemonExtendedInfoArray
   );
+  const pokemonArray = useSelector(
+    (state) => state?.pokemonInfoReducer?.pokemon
+  );
   const pokemonSpeciesArray = useSelector(
     (state) => state?.pokemonInfoReducer?.pokemonSpeciesArray
   );
@@ -33,7 +36,7 @@ export const PokemonList = () => {
   const itemsPerPage = useSelector(
     (state) => state?.pokemonReducer?.itemsPerPage
   );
-
+  const totalPages = Math.ceil(pokemonArray.length / itemsPerPage);
   const dispatch = useDispatch();
 
   useFetchPokemonMainArray(
@@ -102,8 +105,7 @@ export const PokemonList = () => {
               <span>Page {currentPage - 1}</span>
             </button>
           )}
-          {pokemonExtendedInfoArray.length < itemsPerPage ||
-          pokemonExtendedInfoArray === 0 ? (
+          {totalPages === currentPage ? (
             ""
           ) : (
             <button
