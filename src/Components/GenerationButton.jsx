@@ -17,7 +17,7 @@ export const GenerationButton = ({ name, value, id }) => {
         onClick={() => {
           dispatch(fetchPokemon(value));
           onClickHandler();
-          dispatch(setDefaultPage(1));
+          dispatch(setDefaultPage());
         }}
         className="generations-btn "
       >

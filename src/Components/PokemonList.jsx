@@ -30,12 +30,17 @@ export const PokemonList = () => {
   const currentPage = useSelector(
     (state) => state?.pokemonReducer?.currentPage
   );
+  const itemsPerPage = useSelector(
+    (state) => state?.pokemonReducer?.itemsPerPage
+  );
 
   const dispatch = useDispatch();
 
-  useFetchPokemonMainArray();
+  useFetchPokemonMainArray(
+    "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
+  );
 
-  useFetchPokemonExtendedArray();
+  useFetchPokemonExtendedArray(isLoadingExtendedArray);
 
   return (
     <div
@@ -97,7 +102,8 @@ export const PokemonList = () => {
               <span>Page {currentPage - 1}</span>
             </button>
           )}
-          {pokemonExtendedInfoArray.length < 10 ? (
+          {pokemonExtendedInfoArray.length < itemsPerPage ||
+          pokemonExtendedInfoArray === 0 ? (
             ""
           ) : (
             <button

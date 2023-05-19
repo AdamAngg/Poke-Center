@@ -15,7 +15,7 @@ const initialState = {
 
 export const fetchPokemon = createAsyncThunk(
   "pokemon/fetchPokemon",
-  async (url = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0") => {
+  async (url) => {
     return await axios.get(url).then((Response) => Response.data.results);
   }
 );
@@ -39,15 +39,17 @@ export const fetchCurrentPokemon = createAsyncThunk(
 export const fetchSpecies = createAsyncThunk(
   "pokemon/fetchSpecies",
   async (_, { getState }) => {
-    const pokemon = getState().pokemonInfoReducer.pokemon;
+    const pokemon = getState().pokemonInfoReducer.pokemonExtendedInfoArray;
     const pokemonSmallerArray = returnSlicedArray(
       pokemon,
       getState().pokemonReducer.searchedPokemon,
-      getState().pokemonReducer.currentPage,
-      getState().pokemonReducer.itemsPerPage
+      1,
+      10
     );
+    console.log(pokemonSmallerArray);
     const urlsArray = pokemonSmallerArray.map(
-      (pokemon) => "https://pokeapi.co/api/v2/pokemon-species/" + pokemon.name
+      (pokemon) =>
+        "https://pokeapi.co/api/v2/pokemon-species/" + pokemon.species.name
     );
     const responses = await axios.all(
       urlsArray.map(async (url) => {

@@ -4,7 +4,7 @@ export const returnSlicedArray = (
   currentPage,
   itemsPerPage
 ) => {
-  let slice = currentPage * itemsPerPage;
+  const slice = currentPage * itemsPerPage;
 
   return array
     .filter((pokemon) => pokemon.name.toLowerCase().includes(searchedPokemon))

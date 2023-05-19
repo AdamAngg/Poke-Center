@@ -31,8 +31,8 @@ export const pokemonSlice = createSlice({
     decrementCurrentPage: (state) => {
       state.currentPage -= 1;
     },
-    setDefaultPage: (state, action) => {
-      state.currentPage = action.payload;
+    setDefaultPage: (state) => {
+      state.currentPage = 1;
     },
   },
 });

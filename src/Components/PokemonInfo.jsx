@@ -14,7 +14,6 @@ export const PokemonInfo = ({
 
   extendedInfoArray,
 }) => {
-  console.log(currentlySelectedPokemon);
   const dispatch = useDispatch();
   const hasMatchingID = useHasMatchingID(currentlySelectedPokemon.id);
 
