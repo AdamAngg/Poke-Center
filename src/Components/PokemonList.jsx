@@ -38,6 +38,23 @@ export const PokemonList = () => {
   );
   const totalPages = Math.ceil(pokemonArray.length / itemsPerPage);
   const dispatch = useDispatch();
+  const pokemonListItems = pokemonExtendedInfoArray.map((pokemon, index) => {
+    return (
+      <PokemnonRow
+        key={pokemon.id}
+        boolean={true}
+        id={pokemon.id}
+        pokemon={pokemon}
+        japanName={pokemonSpeciesArray[index]?.names[0]?.name}
+        onSelect={(pokemon) => {
+          dispatch(
+            addCurrentPokemon(pokemon),
+            dispatch(addCurrentPokemonExtendedInfo(pokemonSpeciesArray[index]))
+          );
+        }}
+      />
+    );
+  });
 
   useFetchPokemonMainArray(
     "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
@@ -49,9 +66,8 @@ export const PokemonList = () => {
     <div
       className={
         "pokemon-results-container " +
-        (containsSpecialChars(searchedPokemon)
-          ? "pokemon-results-container__error"
-          : "")
+        (containsSpecialChars(searchedPokemon) &&
+          "pokemon-results-container__error")
       }
     >
       <ul className="results">
@@ -70,26 +86,7 @@ export const PokemonList = () => {
             ErrorIcon="warning-outline"
           />
         )}
-        {isLoadingExtendedArray === "loaded" &&
-          pokemonExtendedInfoArray.map((pokemon, index) => {
-            return (
-              <PokemnonRow
-                key={pokemon.id}
-                boolean={true}
-                id={pokemon.id}
-                pokemon={pokemon}
-                japanName={pokemonSpeciesArray[index]?.names[0]?.name}
-                onSelect={(pokemon) => {
-                  dispatch(
-                    addCurrentPokemon(pokemon),
-                    dispatch(
-                      addCurrentPokemonExtendedInfo(pokemonSpeciesArray[index])
-                    )
-                  );
-                }}
-              />
-            );
-          })}
+        {isLoadingExtendedArray === "loaded" && pokemonListItems}
       </ul>
       {isLoadingExtendedArray === "loaded" && (
         <div className="pagination-container">

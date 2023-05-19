@@ -1,7 +1,7 @@
-import { useToggleClick } from "../hooks/useToggleClick.hook";
+import { useToggleClick } from "../../hooks/useToggleClick.hook";
 import { useDispatch } from "react-redux";
-import { fetchPokemon } from "../store/pokemonInfoSlice";
-import { setDefaultPage } from "../store/pokemonSlice";
+import { fetchPokemon } from "../../store/pokemonInfoSlice";
+import { setDefaultPage } from "../../store/pokemonSlice";
 export const GenerationButton = ({ name, value, id }) => {
   const [onClickHandler, currentElementRef] = useToggleClick({
     element: "generations-btn__span",

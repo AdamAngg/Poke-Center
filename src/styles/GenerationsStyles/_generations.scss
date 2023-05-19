@@ -5,3 +5,72 @@
   justify-content: space-evenly;
   padding: 0.8rem 0 1.8rem 0;
 }
+.generations-btn {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.75em 3em;
+  background: $bg-color-pokemontable;
+  border: 0.1em solid $bg-color;
+  border-radius: 100vw;
+  cursor: pointer;
+  transition: background-color 250ms;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  &__span {
+    content: "";
+    position: absolute;
+    background-image: linear-gradient(
+      to right bottom,
+      $bg-color,
+      $bg-color-secondary
+    );
+    width: 10%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    inset: 0;
+    margin: auto;
+    z-index: -1;
+    opacity: 0;
+    transition: transform 1000ms 200ms, opacity 200ms;
+  }
+  &__hover {
+    transform: scale(20);
+    opacity: 1 !important;
+  }
+}
+
+.generations-btn:hover,
+.generations-btn:focus-visible {
+  background-color: $bg-color;
+}
+.generations-btn > :first-child {
+  left: 1rem;
+  top: -6rem;
+  margin-left: 0;
+}
+@media (max-width: 47.5em) {
+  .generations-btn__span {
+    width: 15%;
+  }
+}
+// .generations-btn > :last-child {
+//   right: 0;
+//   top: 0;
+// }
+
+// .generations-btn:active::before {
+//   transform: scale(20);
+//   opacity: 1;
+//   transition: transform 1000ms, opacity 500ms;
+// }
+// .generations-btn:has(:first-child:active)::before {
+//   margin-left: 0;
+// }
+// .generations-btn:has(:last-child:active)::before {
+//   margin-right: 0;
+// }
+// .generations-btn:has(:last-child:active)::before,
+// .generations-btn:has(:last-child:active)::before {
+//   transition: transform 500ms, opacity 250ms;
+// }

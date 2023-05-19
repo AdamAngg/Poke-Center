@@ -5,7 +5,7 @@ import { MainLayout } from "./pages/MainLayout";
 import { PokemonInfo } from "./components/PokemonInfo";
 import { PokemonList } from "./components/PokemonList";
 import { Header } from "./components/Header";
-import { Generations } from "./components/Generations";
+import { Generations } from "./components/Generations/Generations";
 import { Error } from "./components/Error";
 
 export const App = () => {
