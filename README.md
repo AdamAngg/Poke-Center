@@ -1,7 +1,7 @@
 
-# Poke - Center 
+<h1 align="center" id="title">Poke - Center</h1>
 
-Search more info about your pokemon and collect your favorites
+<p>Search more info about your pokemon and collect your favorites</p>
 
 ##🚀DEMO
 
