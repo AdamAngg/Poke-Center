@@ -54,6 +54,34 @@ svg {
     "generations generations"
     "list info";
 }
+*::-webkit-scrollbar {
+  width: 10px;
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  background-color: $bg-color-secondary;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: $bg-color-secondary;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: $bg-color-secondary;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: $bg-color-pokemontable;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: $bg-color-pokemontable;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: $bg-color-pokemontable;
+}
 //Below 1252px
 @media (max-width: 75em) {
   .main {
