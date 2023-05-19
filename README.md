@@ -3,13 +3,13 @@
 
 <p>Search more info about your pokemon and collect your favorites</p>
 
-<h2🚀DEMO</h2>
+<h2>🚀DEMO</h2>
 
 [LIVE](https://adamangg.github.io/Poke-Center/)
 
 <h2>Project Screenshots:</h2>
 <span>
-<img height="400px" src="https://imgur.com/a/qbEZQz6" alt="project-screenshot" width="" height="400/">
+<img height="400px" src="[https://imgur.com/a/qbEZQz6](https://imgur.com/erzd8zi)" alt="project-screenshot" width="" height="400/">
 </span>
 <span>
 <img display="inline-block" src="https://imgur.com/osOHbId" alt="project-screenshot" width="200" height="400/">
