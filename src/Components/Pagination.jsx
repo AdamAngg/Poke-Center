@@ -20,7 +20,7 @@ export const Pagination = () => {
   );
   const totalPages = Math.ceil(pokemonArray.length / itemsPerPage);
   return (
-    !containsSpecialChars(searchedPokemon) && (
+    containsSpecialChars(searchedPokemon) || (
       <div className="pagination-container">
         {currentPage - 1 !== 0 && (
           <button

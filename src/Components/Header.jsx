@@ -21,7 +21,23 @@ export const Header = () => {
   const pokemonSpeciesArray = useSelector(
     (state) => state?.pokemonInfoReducer?.pokemonSpeciesArray
   );
-
+  const pokemonListItems = likedPokemonArray.map((pokemon, index) => {
+    return (
+      <PokemnonRow
+        changeOpacity={false}
+        key={pokemon.pokemonInfo.id}
+        id={pokemon.pokemonInfo.id}
+        pokemon={pokemon.pokemonInfo}
+        japanName={pokemonSpeciesArray[index]?.names[0]?.name}
+        onSelect={(pokemon) => {
+          dispatch(
+            addCurrentPokemon(pokemon),
+            dispatch(addCurrentPokemonExtendedInfo(pokemonSpeciesArray[index]))
+          );
+        }}
+      />
+    );
+  });
   return (
     <header className="header">
       <img
@@ -65,27 +81,7 @@ export const Header = () => {
         <div className="liked">
           <ul className="liked-list">
             {likedPokemonArray.length > 0 ? (
-              likedPokemonArray.map((pokemon, index) => {
-                return (
-                  <PokemnonRow
-                    changeOpacity={false}
-                    key={pokemon.pokemonInfo.id}
-                    id={pokemon.pokemonInfo.id}
-                    pokemon={pokemon.pokemonInfo}
-                    japanName={pokemonSpeciesArray[index]?.names[0]?.name}
-                    onSelect={(pokemon) => {
-                      dispatch(
-                        addCurrentPokemon(pokemon),
-                        dispatch(
-                          addCurrentPokemonExtendedInfo(
-                            pokemonSpeciesArray[index]
-                          )
-                        )
-                      );
-                    }}
-                  />
-                );
-              })
+              pokemonListItems
             ) : (
               <Error
                 ErrorMsg="Your pokemon is no where to be found..."
