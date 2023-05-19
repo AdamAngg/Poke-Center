@@ -17,3 +17,9 @@
     margin-right: 1.2rem;
   }
 }
+@media (max-width: 35.5em) {
+  .error {
+    justify-content: center;
+    grid-area: info;
+  }
+}

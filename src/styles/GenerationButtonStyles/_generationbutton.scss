@@ -43,7 +43,11 @@
   top: -6rem;
   margin-left: 0;
 }
-
+@media (max-width: 47.5em) {
+  .generations-btn__span {
+    width: 15%;
+  }
+}
 // .generations-btn > :last-child {
 //   right: 0;
 //   top: 0;

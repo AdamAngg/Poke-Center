@@ -245,3 +245,34 @@
     transform: translateX(0) rotate(360deg);
   }
 }
+@media (max-width: 35.5em) {
+  .pokemon-results-container {
+    grid-area: list;
+    display: flex;
+    flex-direction: row;
+  }
+  .results {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: space-evenly;
+  }
+  .element__data {
+    display: none;
+  }
+  .element__container {
+    justify-content: center;
+    padding: 1rem;
+  }
+  .element__preview {
+    justify-content: center;
+    margin-right: 0;
+  }
+  .pagination-container {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+  .element__logo {
+    display: none;
+  }
+}

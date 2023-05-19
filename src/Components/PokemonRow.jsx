@@ -44,7 +44,7 @@ export const PokemnonRow = ({
           <img
             src={pokemon?.sprites?.front_default}
             className="pokemon-img"
-            alt={pokemon?.name + "from up front"}
+            alt={capitalizeFirstLetter(pokemon?.name) + " from up front"}
           />
         </figure>
         <div className="element__data">

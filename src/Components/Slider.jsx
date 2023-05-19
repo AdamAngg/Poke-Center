@@ -7,8 +7,8 @@ const StyledFigure = styled.figure`
     content: "";
     position: absolute;
     border-radius: 50%;
-    height: 85rem;
-    width: 85rem;
+    height: 170%;
+    width: 120%;
     bottom: 30%;
     left: 50%;
     opacity: ${({ loading }) => loading};
@@ -29,7 +29,7 @@ const StyledSliderImage = styled.div`
   background-image: ${({ imageurl }) => `url(${imageurl})`};
 `;
 
-export const Slider = ({ images, types, id, stats }) => {
+export const Slider = ({ name, images, types, id, stats }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = Object.keys(images);
   const [loading, setLoading] = useState(true);
@@ -76,7 +76,11 @@ export const Slider = ({ images, types, id, stats }) => {
       />
       <StyledSliderImage
         className="slider__image"
-        alt=""
+        aria-label={
+          currentSlide === 0
+            ? "Biger picture of " + name
+            : "Biger picture of shiny " + name
+        }
         loading={loading ? 0 : 1}
         imageurl={images[slides[currentSlide]]}
       >

@@ -113,3 +113,43 @@
 .liked-list {
   list-style: none;
 }
+@media (max-width: 47.5em) {
+  .search__bar {
+    width: 20rem;
+  }
+}
+@media (max-width: 35.5em) {
+  .liked {
+    width: 30rem;
+  }
+  .liked-pokemons {
+    justify-items: center;
+  }
+  .liked-pokemons__btn > span {
+    display: none;
+  }
+  .liked-pokemons__btn > img {
+    margin: 0 auto;
+  }
+  .search {
+    margin-right: 2rem;
+    padding-left: 2rem;
+  }
+  .header__logo {
+    height: 80%;
+  }
+  .search__bar {
+    font-size: 1.2rem;
+  }
+  .search__bar {
+    width: 13rem;
+  }
+  .search__btn {
+    padding: 1rem 3rem;
+  }
+}
+@media (max-width: 24em) {
+  .header__logo {
+    height: 65%;
+  }
+}

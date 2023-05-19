@@ -28,7 +28,7 @@ export const GenerationButton = ({ name, value, id }) => {
           }
           ref={currentElementRef}
         ></span>
-        {name}
+        <span>{name}</span>
       </button>
     </>
   );

@@ -54,3 +54,43 @@ svg {
     "generations generations"
     "list info";
 }
+//Below 1252px
+@media (max-width: 75em) {
+  .main {
+    inset: 0;
+    margin: auto;
+    border-radius: 0;
+  }
+}
+@media (max-width: 60em) {
+  html {
+    font-size: 50.5%;
+  }
+}
+@media (max-width: 47.5em) {
+  html {
+    font-size: 49%;
+  }
+}
+@media (max-width: 37.5em) {
+  html {
+    font-size: 47%;
+  }
+  .main {
+    min-height: 112rem;
+    grid-template-rows: 10rem 6rem minmax(100%, auto);
+  }
+}
+@media (max-width: 35.5em) {
+  html {
+    font-size: 45%;
+  }
+  .main {
+    grid-template-areas:
+      "head head"
+      "generations generations"
+      "list list"
+      "info info";
+    grid-template-rows: 10rem 6rem 20rem minmax(100%, auto);
+  }
+}

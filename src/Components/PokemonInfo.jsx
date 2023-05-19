@@ -26,6 +26,7 @@ export const PokemonInfo = ({
   return (
     <div className="pokemoninfo-container">
       <Slider
+        name={currentlySelectedPokemon.species.name}
         images={currentlySelectedPokemon.sprites.other["official-artwork"]}
         key={currentlySelectedPokemon.id}
         types={currentlySelectedPokemon.types}

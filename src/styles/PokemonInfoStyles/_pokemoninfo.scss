@@ -143,3 +143,19 @@
     background: #e74c3c;
   }
 }
+
+@media (max-width: 37.5em) {
+  .pokeball__button {
+    inset: 2;
+    margin: auto;
+  }
+}
+
+@media (max-width: 35.5em) {
+  .pokemoninfo-container {
+    margin-top: 2rem;
+  }
+  .pokeball-container {
+    left: 25%;
+  }
+}
