@@ -7,6 +7,7 @@ import { PokemonList } from "./components/PokemonList";
 import { Header } from "./components/Header";
 import { Generations } from "./components/Generations/Generations";
 import { Error } from "./components/Error";
+import { Footer } from "./components/Footer/Footer";
 
 export const App = () => {
   const currentlySelectedPokemon = useSelector(
@@ -21,13 +22,11 @@ export const App = () => {
       <Header />
       <Generations />
       <PokemonList />
-      {!currentlySelectedPokemon ? (
+      {!currentlySelectedPokemon && (
         <Error
           ErrorMsg="Try and search more information about your pokemon!"
           ErrorIcon="happy-outline"
         />
-      ) : (
-        ""
       )}
       {currentlySelectedPokemon && (
         <PokemonInfo
@@ -35,6 +34,7 @@ export const App = () => {
           extendedInfoArray={currentlySelectedPokemonExtendedInfo}
         />
       )}
+      <Footer />
     </MainLayout>
   );
 };

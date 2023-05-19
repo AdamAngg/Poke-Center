@@ -111,14 +111,14 @@ export const Slider = ({ name, images, types, id, stats }) => {
 
       <button className="slider__btn__stats slider__btn__stats__left">
         <div className="hehe">
-          <span>No. </span>
+          <span>No.&nbsp;</span>
           <span>{id}</span>
         </div>
       </button>
 
       <button className="slider__btn__stats slider__btn__stats__right">
         <div className="slider__btn__stats__container">
-          <span>HP </span>
+          <span>HP&nbsp;</span>
           <span>{stats[0]?.base_stat}</span>
         </div>
       </button>

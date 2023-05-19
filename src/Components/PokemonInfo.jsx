@@ -5,15 +5,30 @@ import { styled } from "styled-components";
 import { useDispatch } from "react-redux";
 import { useHasMatchingID } from "../hooks/useHasMatchingID.hook";
 import { addLikedPokemon, deleteLikedPokemon } from "../store/pokemonInfoSlice";
+import { Footer } from "./Footer/Footer";
 const StyledButton = styled.button`
   background-color: ${(props) => `var(--${props.color})`};
   color: #fff3e2;
 `;
 export const PokemonInfo = ({
   currentlySelectedPokemon,
-
   extendedInfoArray,
 }) => {
+  const typesItem = currentlySelectedPokemon.types.map((type, i) => (
+    <StyledButton
+      key={i}
+      className="slider__btn__stats"
+      color={type?.type?.name}
+    >
+      <span>{capitalizeFirstLetter(type?.type?.name)}</span>
+    </StyledButton>
+  ));
+  const statsItem = currentlySelectedPokemon.stats.slice(1).map((stats, i) => (
+    <div className="stat" key={i}>
+      <span>{stats.base_stat}</span>
+      <span>{capitalizeFirstLetter(stats.stat.name)}</span>
+    </div>
+  ));
   const dispatch = useDispatch();
   const hasMatchingID = useHasMatchingID(currentlySelectedPokemon.id);
 
@@ -51,25 +66,8 @@ export const PokemonInfo = ({
         <h3>{extendedInfoArray?.flavor_text_entries[9]?.flavor_text}</h3>
       </div>
 
-      <div className="types">
-        {currentlySelectedPokemon.types.map((type, i) => (
-          <StyledButton
-            key={i}
-            className="slider__btn__stats"
-            color={type?.type?.name}
-          >
-            <span>{capitalizeFirstLetter(type?.type?.name)}</span>
-          </StyledButton>
-        ))}
-      </div>
-      <div className="stats-container">
-        {currentlySelectedPokemon.stats.slice(1).map((stats, i) => (
-          <div className="stat" key={i}>
-            <span>{stats.base_stat}</span>
-            <span>{capitalizeFirstLetter(stats.stat.name)}</span>
-          </div>
-        ))}
-      </div>
+      <div className="types">{typesItem}</div>
+      <div className="stats-container">{statsItem}</div>
     </div>
   );
 };

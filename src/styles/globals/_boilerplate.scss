@@ -40,6 +40,7 @@ svg {
   grid-template-columns: 1fr 2.5fr;
 }
 .main {
+  position: relative;
   @extend %grid;
   max-width: 120rem;
   min-height: 90rem;
