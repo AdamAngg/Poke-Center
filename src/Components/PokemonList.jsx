@@ -12,14 +12,13 @@ import { useFetchPokemonMainArray } from "../hooks/useFetchPokemonMainArray.hook
 import { Error } from "./Error";
 import { containsSpecialChars } from "../helpers/containsSpecialChars.helper";
 import { useFetchPokemonExtendedArray } from "../hooks/useFetchPokemonExtendedArray.hook";
+import { Pagination } from "./Pagination";
 
 export const PokemonList = () => {
   const pokemonExtendedInfoArray = useSelector(
     (state) => state?.pokemonInfoReducer?.pokemonExtendedInfoArray
   );
-  const pokemonArray = useSelector(
-    (state) => state?.pokemonInfoReducer?.pokemon
-  );
+
   const pokemonSpeciesArray = useSelector(
     (state) => state?.pokemonInfoReducer?.pokemonSpeciesArray
   );
@@ -30,14 +29,9 @@ export const PokemonList = () => {
   const isLoadingExtendedArray = useSelector(
     (state) => state?.pokemonInfoReducer?.extendedInfoArrayloading
   );
-  const currentPage = useSelector(
-    (state) => state?.pokemonReducer?.currentPage
-  );
-  const itemsPerPage = useSelector(
-    (state) => state?.pokemonReducer?.itemsPerPage
-  );
-  const totalPages = Math.ceil(pokemonArray.length / itemsPerPage);
+
   const dispatch = useDispatch();
+
   const pokemonListItems = pokemonExtendedInfoArray.map((pokemon, index) => {
     return (
       <PokemnonRow
@@ -88,31 +82,8 @@ export const PokemonList = () => {
         )}
         {isLoadingExtendedArray === "loaded" && pokemonListItems}
       </ul>
-      {isLoadingExtendedArray === "loaded" && (
-        <div className="pagination-container">
-          {currentPage - 1 === 0 || containsSpecialChars(searchedPokemon) ? (
-            ""
-          ) : (
-            <button
-              className="generations-btn pagination--hover--left"
-              onClick={() => dispatch(decrementCurrentPage())}
-            >
-              <span>Page {currentPage - 1}</span>
-            </button>
-          )}
-          {totalPages === currentPage ||
-          containsSpecialChars(searchedPokemon) ? (
-            ""
-          ) : (
-            <button
-              className="generations-btn pagination--hover--right"
-              onClick={() => dispatch(incrementCurrentPage())}
-            >
-              <span>Page {currentPage + 1}</span>
-            </button>
-          )}
-        </div>
-      )}
+
+      {isLoadingExtendedArray === "loaded" && <Pagination />}
     </div>
   );
 };
