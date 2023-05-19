@@ -1,8 +1,8 @@
 
-# Poke - Center #
+# Poke - Center 
 Search more info about your pokemon and collect your favorites
 
-#🚀DEMO#
+#🚀DEMO
 [LIVE](https://adamangg.github.io/Poke-Center/)
 #PROJECT SCREENSHOTS
 
