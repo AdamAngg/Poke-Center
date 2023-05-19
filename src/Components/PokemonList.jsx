@@ -63,14 +63,12 @@ export const PokemonList = () => {
             ErrorIcon="alert-circle-outline"
           />
         )}
-        {containsSpecialChars(searchedPokemon) ? (
+        {containsSpecialChars(searchedPokemon) && (
           <Error
             key={2}
             ErrorMsg="You trying to trick me? Aren't you? :( "
             ErrorIcon="warning-outline"
           />
-        ) : (
-          ""
         )}
         {isLoadingExtendedArray === "loaded" &&
           pokemonExtendedInfoArray.map((pokemon, index) => {
@@ -95,7 +93,7 @@ export const PokemonList = () => {
       </ul>
       {isLoadingExtendedArray === "loaded" && (
         <div className="pagination-container">
-          {currentPage - 1 === 0 ? (
+          {currentPage - 1 === 0 || containsSpecialChars(searchedPokemon) ? (
             ""
           ) : (
             <button
@@ -105,7 +103,8 @@ export const PokemonList = () => {
               <span>Page {currentPage - 1}</span>
             </button>
           )}
-          {totalPages === currentPage ? (
+          {totalPages === currentPage ||
+          containsSpecialChars(searchedPokemon) ? (
             ""
           ) : (
             <button
