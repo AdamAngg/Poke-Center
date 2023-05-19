@@ -9,10 +9,10 @@
 
 <h2>Project Screenshots:</h2>
 <span>
-<img height="400px" src="[[https://imgur.com/a/qbEZQz6](https://imgur.com/erzd8zi)](https://i.imgur.com/erzd8zi.png)" alt="project-screenshot" width="" height="400/">
+<img height="400px" src="https://i.imgur.com/erzd8zi.png" alt="project-screenshot" width="" height="400/">
 </span>
 <span>
-<img display="inline-block" src="https://imgur.com/osOHbId" alt="project-screenshot" width="200" height="400/">
+<img display="inline-block" src="https://i.imgur.com/osOHbId.png" alt="project-screenshot" width="200" height="400/">
 </span>
 
 <h2>💻 Built with</h2>
