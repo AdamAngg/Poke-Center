@@ -121,5 +121,6 @@ svg {
       "list list"
       "info info";
     grid-template-rows: 10rem 6rem 20rem minmax(100%, auto);
+    min-height: 100vh;
   }
 }

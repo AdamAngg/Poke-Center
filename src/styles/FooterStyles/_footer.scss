@@ -1,20 +1,40 @@
 @use "../globals" as *;
 .footer {
+  grid-area: info;
   position: absolute;
-
   bottom: 0;
-  margin-right: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  margin-bottom: 1rem;
 }
 .navbar {
   &__list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
     list-style: none;
     &__element {
       font: inherit;
+      text-align: center;
       font-weight: 600;
-
+      a {
+        color: rgba(110, 110, 110, 0.409);
+        display: flex;
+        ion-icon {
+          margin-top: 1px;
+          align-self: baseline;
+          margin-left: 0.5rem;
+          height: 1rem;
+        }
+      }
       a:hover {
         color: $bg-color-secondary;
       }
     }
+  }
+}
+@media (max-width: 35.5em) {
+  .footer {
+    bottom: 30%;
   }
 }

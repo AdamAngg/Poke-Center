@@ -9,6 +9,7 @@ export const Footer = () => {
         href={link.url}
       >
         {link.name}
+        <ion-icon name={link.logo}></ion-icon>
       </a>
     </li>
   ));
