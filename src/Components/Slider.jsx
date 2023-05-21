@@ -33,6 +33,15 @@ export const Slider = ({ name, images, types, id, stats }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = Object.keys(images);
   const [loading, setLoading] = useState(true);
+  const sliderDots = slides.map((e, index) => {
+    return (
+      <button
+        key={index}
+        onClick={(evt) => onClickHandler(evt.target.dataset, index)}
+        data-active={index === currentSlide ? "true" : "false"}
+      ></button>
+    );
+  });
 
   useEffect(() => {
     setCurrentSlide(0);
@@ -97,17 +106,7 @@ export const Slider = ({ name, images, types, id, stats }) => {
           ></ion-icon>
         </div>
       </StyledSliderImage>
-      <div className="slider__dot">
-        {slides.map((e, index) => {
-          return (
-            <button
-              key={index}
-              onClick={(evt) => onClickHandler(evt.target.dataset, index)}
-              data-active={index === currentSlide ? "true" : "false"}
-            ></button>
-          );
-        })}
-      </div>
+      <div className="slider__dot">{sliderDots}</div>
 
       <button className="slider__btn__stats slider__btn__stats__left">
         <div className="hehe">

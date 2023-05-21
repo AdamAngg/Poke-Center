@@ -1,5 +1,5 @@
 import { useCallback, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addPokemonNodeClicked } from "../store/pokemonSlice";
 
 export const useToggleClick = ({ element, className, dispatching }) => {
