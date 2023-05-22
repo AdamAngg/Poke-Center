@@ -21,7 +21,7 @@ Technologies used in the project:
 
 *   React
 *   Redux toolkit
-*   sass
+*   Scss
 *   create react app
 *   javascript
 *   axios
