@@ -5,7 +5,7 @@ import { styled } from "styled-components";
 import { useDispatch } from "react-redux";
 import { useHasMatchingID } from "../hooks/useHasMatchingID.hook";
 import { addLikedPokemon, deleteLikedPokemon } from "../store/pokemonInfoSlice";
-import { Footer } from "./Footer/Footer";
+
 const StyledButton = styled.button`
   background-color: ${(props) => `var(--${props.color})`};
   color: #fff3e2;
