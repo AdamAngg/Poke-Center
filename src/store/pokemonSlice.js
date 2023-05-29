@@ -1,5 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+export const loadPokemonStateFromLocalStorage = () => {
+  try {
+    const serializedState = localStorage.getItem("pokemonState");
+    if (serializedState === null) {
+      return initialState;
+    }
+    return JSON.parse(serializedState);
+  } catch (error) {
+    return initialState;
+  }
+};
+export const updatePokemonStateToLocalStorage = (state) => {
+  const serializedState = JSON.stringify(state);
+  localStorage.setItem("pokemonState", serializedState);
+};
 const initialState = {
   pokemonNodeClicked: null,
   currentlySelectedPokemon: null,

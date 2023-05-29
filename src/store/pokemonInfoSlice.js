@@ -1,7 +1,21 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { returnSlicedArray } from "../helpers/returnSlicedArray.helper";
-
+export const loadPokemonInfoStateFromLocalStorage = () => {
+  try {
+    const serializedState = localStorage.getItem("pokemonInfoState");
+    if (serializedState === null) {
+      return initialState;
+    }
+    return JSON.parse(serializedState);
+  } catch (error) {
+    return initialState;
+  }
+};
+export const updatePokemonInfoStateToLocalStorage = (state) => {
+  const serializedState = JSON.stringify(state);
+  localStorage.setItem("pokemonInfoState", serializedState);
+};
 const initialState = {
   pokemon: [],
   pokemonExtendedInfoArray: [],
